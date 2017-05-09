@@ -185,7 +185,9 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-05-09T05:09:16.000Z" class="post-list__meta--date date">2017-05-09</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
+      <time datetime="2017-05-09T05:09:16.000Z" class="post-list__meta--date date">2017-05-09</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/markdown/">markdown</a>
+ </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
@@ -196,36 +198,35 @@
 
   <section class="post">
     <p>　　Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。当然，我使用这个主要是因为github的锅。别的不多说了，这里简单介绍一些Markdown的基本语法：  </p>
-<p>##1. 标题<br>　　对于标题，有两种写法：Setext和atx形式。Setext形式是利用底线的形式，利用=（最高阶标题）和-（第二节标题）；Atx形式是在行首插入1到6个#，对应标题1到6阶。</p>
-<p>###Setext形式：</p>
-<pre><code>    　　　A First Level Header  
-    　　　=（几个等于号都行）
-    　　　A Second Level Header
-    　　　-
-</code></pre><p>　　A First Level Header<br>=<br>　　　A Second Level Header<br>-</p>
-<p>###Atx形式：<br>    　　　　　#A First Level Header<br>    　　　　　##A Second Level Header</p>
-<p>#　　A First Level Header  </p>
-<p>##　　　A Second Level Header</p>
-<p>##2. 段落<br>　　想要分段需要在两个段落中间加入一个以上的空行。或者可以在上一个段末加上两个空格。不过，效果不同。</p>
-<pre><code>　　　　　This is a paragraph.
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h2><p>　　对于标题，有两种写法：Setext和atx形式。Setext形式是利用底线的形式，利用=（最高阶标题）和-（第二节标题）；Atx形式是在行首插入1到6个#，对应标题1到6阶。</p>
+<h3 id="Setext形式："><a href="#Setext形式：" class="headerlink" title="Setext形式："></a>Setext形式：</h3><pre><code>A First Level Header  
+=（几个等于号都行）
+A Second Level Header
+-
+</code></pre><p>A First Level Header<br>=<br>A Second Level Header<br>-</p>
+<p>经测试，好像Setex并不靠谱。。。</p>
+<h3 id="Atx形式："><a href="#Atx形式：" class="headerlink" title="Atx形式："></a>Atx形式：</h3><pre><code>#A First Level Header  
+##A Second Level Header
+</code></pre><h1 id="A-First-Level-Header"><a href="#A-First-Level-Header" class="headerlink" title="A First Level Header"></a>A First Level Header</h1><h2 id="A-Second-Level-Header"><a href="#A-Second-Level-Header" class="headerlink" title="A Second Level Header"></a>A Second Level Header</h2><h2 id="2-段落"><a href="#2-段落" class="headerlink" title="2. 段落"></a>2. 段落</h2><p>　　想要分段需要在两个段落中间加入一个以上的空行。或者可以在上一个段末加上两个空格。不过，效果不同。</p>
+<pre><code>This is a paragraph.
 
-　　　　　This is the second paragraph    
-</code></pre><p>　　　　This is a paragraph.</p>
-<p>　　　　This is the second paragraph  </p>
-<pre><code>　　　　　This is a paragraph.(space)(space)  
-　　　　　This is the second paragraph
-</code></pre><p>　　　　This is a paragraph.<br>　　　　This is the second paragraph</p>
+This is the second paragraph    
+</code></pre><p>This is a paragraph.</p>
+<p>This is the second paragraph  </p>
+<pre><code>This is a paragraph.(space)(space)  
+This is the second paragraph
+</code></pre><p>This is a paragraph.<br>This is the second paragraph</p>
 <h2 id="3-粗斜体"><a href="#3-粗斜体" class="headerlink" title="3. 粗斜体"></a>3. 粗斜体</h2><p>　　粗体，斜体也经常会用到。斜体就是文本两端加上＊或者＿，而粗体是在两边各加两个，粗斜体是加三个。</p>
-<pre><code>　　　　　*斜体文本*　　_斜体文本_
-</code></pre><p>　　　　<em>斜体文本</em>　　<em>斜体文本</em></p>
-<pre><code>　　　　　**粗体文本**　　__粗体文本__
-</code></pre><p>　　　　<strong>粗体文本</strong>　　<strong>粗体文本</strong></p>
-<pre><code>　　　　　***粗斜体文本***　　___粗斜体文本___
-</code></pre><p>　　　　<strong><em>粗斜体文本</em></strong>　　<strong><em>粗斜体文本</em></strong></p>
-<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4. 列表"></a>4. 列表</h2><p>###无序列表<br>以下三种写法都行：  </p>
-<pre><code>　　　- 列表文本前使用 [减号+空格]
-　　　+ 列表文本前使用 [加号+空格]    
-　　　* 列表文本前使用 [星号+空格]
+<pre><code>*斜体文本*　　_斜体文本_
+</code></pre><p><em>斜体文本</em>　　<em>斜体文本</em></p>
+<pre><code>**粗体文本**　　__粗体文本__
+</code></pre><p><strong>粗体文本</strong>　　<strong>粗体文本</strong></p>
+<pre><code>***粗斜体文本***　　___粗斜体文本___
+</code></pre><p><strong><em>粗斜体文本</em></strong>　　<strong><em>粗斜体文本</em></strong></p>
+<h2 id="4-列表"><a href="#4-列表" class="headerlink" title="4. 列表"></a>4. 列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>以下三种写法都行：  </p>
+<pre><code>- 列表文本前使用 [减号+空格]
++ 列表文本前使用 [加号+空格]    
+* 列表文本前使用 [星号+空格]
 </code></pre><ul>
 <li>列表文本前使用 [减号+空格]</li>
 </ul>
@@ -235,7 +236,7 @@
 <ul>
 <li>列表文本前使用 [星号+空格]</li>
 </ul>
-<p>###有序列表<br><strong>注意：</strong><br>　　数字后面有个点<strong>.</strong>  </p>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p><strong>注意：</strong><br>　　数字后面有个点<strong>.</strong>  </p>
 <pre><code>1. 列表前使用 [数字+空格]  
 2. 我们会自动帮你添加数字  
 7. 不用担心数字不对，显示的时候我们会自动把这行的 7 纠正为 3  
@@ -245,10 +246,14 @@
 <li>不用担心数字不对，显示的时候我们会自动把这行的 7 纠正为 3</li>
 </ol>
 <p>　　除了普通的列表以外，我们也许还会用到列表的嵌套，这时候，只需要在前面加上四个空格。</p>
-<h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5. 链接"></a>5. 链接</h2><p>###常用的链接方法：<br>        文字链接 <a href="http://www.orzn.ml" target="_blank" rel="external">this is my hourse</a><br>         网址链接 <a href="http://www.orzn.ml" target="_blank" rel="external">http://www.orzn.ml</a><br>　　文字链接 <a href="http://www.orzn.ml" target="_blank" rel="external">this is my hourse</a><br> 　　网址链接 <a href="http://www.orzn.ml" target="_blank" rel="external">http://www.orzn.ml</a></p>
-<p>###高级链接方法：<br>    这个链接用 1 作为网址变量 <a href="http://www.google.com/" target="_blank" rel="external">Google</a>.这个链接用 yahoo 作为网址变量 <a href="http://www.yahoo.com/" target="_blank" rel="external">Yahoo!</a>.<br>    然后在文档的结尾为变量赋值（网址）</p>
-<pre><code>[1]: http://www.google.com/
-[yahoo]: http://www.yahoo.com/
+<h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5. 链接"></a>5. 链接</h2><h3 id="常用的链接方法："><a href="#常用的链接方法：" class="headerlink" title="常用的链接方法："></a>常用的链接方法：</h3><pre><code>文字链接 [this is my hourse](http://www.orzn.ml)    
+ 网址链接 &lt;http://www.orzn.ml&gt;
+</code></pre><p>　　文字链接 <a href="http://www.orzn.ml" target="_blank" rel="external">this is my hourse</a><br> 　　网址链接 <a href="http://www.orzn.ml" target="_blank" rel="external">http://www.orzn.ml</a></p>
+<h3 id="高级链接方法："><a href="#高级链接方法：" class="headerlink" title="高级链接方法："></a>高级链接方法：</h3><pre><code>这个链接用 1 作为网址变量 [Google][1].这个链接用 yahoo 作为网址变量 [Yahoo!][yahoo].
+然后在文档的结尾为变量赋值（网址）
+
+  [1]: http://www.google.com/
+  [yahoo]: http://www.yahoo.com/
 </code></pre><p> 这个链接用 1 作为网址变量 <a href="http://www.google.com/" target="_blank" rel="external">Google</a>.<br>这个链接用 yahoo 作为网址变量 <a href="http://www.yahoo.com/" target="_blank" rel="external">Yahoo!</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
 <p>　　以上两种写法显示效果是一样的，第二种方法在文档的结尾所写的网址，也不会显示。</p>
 <h2 id="6-图片"><a href="#6-图片" class="headerlink" title="6. 图片"></a>6. 图片</h2><p>　<br>　　跟链接的方法区别在于前面加了个感叹号 !，这样是不是觉得好记多了呢？<br><img src="http://ww4.sinaimg.cn/mw690/7b405dbbgw1e9ko16tk6dj20pc0fuwhw.jpg" alt="this is my picture"><br>也可以使用 HTML 的图片语法来自定义图片的宽高大小:  </p>
@@ -256,8 +261,7 @@
 </code></pre><p><img src="http://ww4.sinaimg.cn/mw690/7b405dbbgw1e9ko16tk6dj20pc0fuwhw.jpg" width="200" height="100"></p>
 <h2 id="7-代码"><a href="#7-代码" class="headerlink" title="7. 代码"></a>7. 代码</h2><p>　　想要在文中高亮语句中的某个函数名或关键字，可以使用 `function_name()` 实现<code>function_name()</code>。如果是代码段，可以用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```javascript</div><div class="line">$(document).ready(function () &#123;</div><div class="line">    alert(&apos;hello world&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'hello world'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>##PS:</p>
-<ul>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h2><ul>
 <li>如果你的描述中需要用到 markdown 的符号，比如 <em> # * 等，但又不想它被转义，这时候可以在这些符号前加反斜杠，如 \</em> \# \* 进行避免。</li>
 <li>目前只支持部分段内 HTML 元素效果，包括<br><code>&lt;kdb&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code>当然，前面提到的img也是。</li>
 <li>markdown里面段落前是不能空两格的，我们可以将输入法调成全角，然后在段首敲两个空格键就可以了。</li>
