@@ -190,8 +190,9 @@
       <h2 class="post-list__post-title post-title"><a href="/2017/05/18/java/" title="link to post.title">Java ConcurrentModificationException</a></h2>
       <p class="excerpt">
     
-      ConcurrentModificationException异常原因和解决方法1. 出现原因　　具体源码就不剖析了，直接说结果。原因是调用list.remove()方法导致modCount和expectedModCount的值不一致。注意，像使用for-each进行迭代实际上也会出现这种问题。所以，在迭代的过程中就不要使用list.remove()方法。
-2. 单线程环境下的解决办法　　既然知道&hellip;
+      1. 出现原因　　具体源码就不剖析了，直接说结果。原因是调用list.remove()方法导致modCount和expectedModCount的值不一致。注意，像使用for-each进行迭代实际上也会出现这种问题。所以，在迭代的过程中就不要使用list.remove()方法。
+2. 单线程环境下的解决办法　　既然知道原因了，那么如何解决呢？
+　　其实很简单，细心的朋友可能发现在Itr类中也给出了&hellip;
     
       </p>
       <div class="post-list__meta"><time datetime="2017-05-18T14:26:32.003Z" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
