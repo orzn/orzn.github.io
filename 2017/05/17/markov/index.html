@@ -216,16 +216,17 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/05/18/java/" title="Java ConcurrentModificationException">Java ConcurrentModificationException</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/05/17/七周七并发之一/" title="七周七并发之线程与锁">七周七并发之线程与锁</a></h2>
                 <p class="excerpt">
                 
-                1. 出现原因　　具体源码就不剖析了，直接说结果。原因是调用list.remove()方法导致modCount和expectedModCount的值不一致。注意，像使用for-each进行迭代实际上也会出现这种问题。所以，在迭代的过程中就不要使用list.remove()方法。
-2. 单线程环境下的&hellip;
+                　　线程与锁模型其实是对底层硬件运行过程的形式化。这种形式化既是该模型最大的优点也是它最大的缺点。
+1、 互斥和内存模型　　Java中，并发的基本单元是线程，可以将线程看作控制流。线程共享内存进行通信。线程的helloword版需要包括：
+1234mythread.start();Thread.yi&hellip;
                 
                 </p>
-                <div class="post-list__meta"><time datetime="2017-05-18T14:26:32.003Z" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>
-</span><a class="btn-border-small" href="/2017/05/18/java/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-05-17T15:39:27.000Z" class="post-list__meta--date date">2017-05-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
+</span><a class="btn-border-small" href="/2017/05/17/七周七并发之一/">继续阅读</a></div>
                            
             </div>
         
