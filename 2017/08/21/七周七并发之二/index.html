@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>七周七并行之函数式编程 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="七周七并行之函数式编程 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="七周七并行之函数式编程 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2017/08/21/七周七并发之二/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-08-21T15:39:27.000Z" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">七周七并行之函数式编程</h1>
+  </header>
+
+  <section class="post">
+    <p>　　提到函数式编程，就要提到命令式编程。常见的C，Java都是命令式编程，代码由一些列改变全局状态的语句过程，而函数式编程则是将计算过程抽象成表达式求值。轮子哥是这么形容函数式语言的，“函数是语言都倾向于让你用函数来组成函数，而不是把函数看成是一个数据弄成另一个数据的过程。”函数式编程可以更容易做到线程安全，因此特别适合于并发编程。</p>
+<h4 id="1、抛弃可变状态"><a href="#1、抛弃可变状态" class="headerlink" title="1、抛弃可变状态"></a>1、抛弃可变状态</h4><p>　　函数式编程里，没有可变状态。为了体验函数式编程，这里介绍下<strong>Clojure</strong>。Clojure是一种运行在Java平台上的 Lisp 方言，Lisp是一种以表达性和功能强大著称的编程语言，但人们通常认为它不太适合应用于一般情况，而Clojure的出现彻底改变了这一现状。如今，在任何具备 Java 虚拟机的地方，您都可以利用 Lisp 的强大功能。</p>
+<p>　　Clojure代码由s-表达式过构成。可以将表达式视为带括号的列表。主流语言中的max(3,5)在Clojure中写作：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user=&gt; (max 3 5)</div></pre></td></tr></table></figure>
+<p>　　数学运算符也是同样的表示方式。比如1+2*3，写成：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user=&gt; (+ 1 (* 2 3))</div></pre></td></tr></table></figure>
+<p>　　使用def可以定义常量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user=&gt; (def meaning-of-life 42)</div><div class="line">#&apos;user/meaning-of-life</div><div class="line">user=&gt; meaning-of-life</div><div class="line">42</div></pre></td></tr></table></figure>
+<p>　　控制结构也可以写成s-表达式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">user=&gt; (if (&lt; meaning-of-life 0) &quot;negative&quot; &quot;non-negative&quot;)</div><div class="line">&quot;non-negative&quot;</div></pre></td></tr></table></figure>
+<p>　　Clojure的大多数语句都是一个s-表达式，然而也有个别例外。矢量（数组）是用方括号表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">user=&gt; (def droids [&quot;a&quot; &quot;b&quot; &quot;c&quot;])</div><div class="line">#&apos;user/droids</div><div class="line">user=&gt; (count droids)</div><div class="line">3</div><div class="line">user=&gt; (droids 0)</div><div class="line">&quot;a&quot;</div><div class="line">user=&gt; (droids 2)</div><div class="line">&quot;c&quot;</div></pre></td></tr></table></figure>
+<p>　　map是用花括号表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user=&gt; (def me &#123;:name &quot;Paul&quot; :age 45 :sex :male&#125;)</div><div class="line">#&apos;user/me</div><div class="line">user=&gt; (:age me)</div><div class="line">45</div></pre></td></tr></table></figure>
+<p>　　使用defn可以定义函数，函数参数是矢量形式的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user=&gt; (defn percentage [x p] (* x (/ p 100.0)))</div><div class="line">#&apos;user/percentage</div><div class="line">user=&gt; (percentage 200 10)</div><div class="line">20.0</div></pre></td></tr></table></figure>
+<p><strong>举个例子</strong>——词频统计<br>　　先给出代码：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">defn</span></span> word-frequencies [words]</div><div class="line">(<span class="name"><span class="builtin-name">reduce</span></span> </div><div class="line">(<span class="name"><span class="builtin-name">fn</span></span> [counts word] (<span class="name"><span class="builtin-name">assoc</span></span> counts word (<span class="name"><span class="builtin-name">inc</span></span> (<span class="name"><span class="builtin-name">get</span></span> counts word <span class="number">0</span>))))</div><div class="line">&#123;&#125; words</div><div class="line">))</div></pre></td></tr></table></figure>
+<p>　　defn定义一个函数，所有外面有一个大括号，words是参数，里面的()就是函数体，reduce是Clojure中一个函数，需要三个参数，第一个也就是fn是匿名化简函数，{}是初始值，words是集合。reduce将为集合中的每一个元素都调用一次化简函数。接着，我们看fn函数，需要两个参数counts和word，counts是一个map，(get counts word 0)返回counts中word对应的个数，inc()接受这个值并加1，assoc()更新counts中word的值。这个就是简单的词频统计，下一步是将其与XML结合，统计其中词频。</p>
+<p>　　话不多说，还是直接上代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(defn get-words [text] (re-seq  #&quot;\w+&quot; text))</div><div class="line">(defn count-words-sequential [pages]</div><div class="line">(frequencies (mapcat get-words pages)))</div></pre></td></tr></table></figure>
+<p>　　get-words函数是利用正则表达式将text切割成词的序列。对一个字符串序列进行映射，会得到一个二维序列。要得到一维序列，这就是mapcat的功能。</p>
+<p>　　值得注意的是，Clojure中序列是懒惰的，也就是说只有在当使用时，元素才会被求值。所以，在面对大数据量，如40GB大小的文件，也完全可以处理。</p>
+<h4 id="2、函数式并行"><a href="#2、函数式并行" class="headerlink" title="2、函数式并行"></a>2、函数式并行</h4><p>　　map函数，接受一个函数f和一个序列，返回一个新的序列，将序列中的每一个元素的值作为f的参数，f的返回值则成新序列的对应元素。partial函数，接受一个函数和若干参数，返回一个被局部代入的函数。如：(partial * 2) 2 等于4。而Clojure中提供了功能类似于map的pmap函数，将处理过程并行化。merge-with函数将maps中其余的map合并到第一个map中。</p>
+<p>　　show you the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(defn count-words-parallel [pages]</div><div class="line">(reduce (partial merge-with +) (pmap #(frequencies (get-words %)) pages)))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>note: #(frequencies (get-words %)) 等价于 (fn [page] (frequencies (get-words page)))</p>
+</blockquote>
+<p>　　但是，通过实验，这里的效率提升其实并不理想。我们可以注意到，这里reduce将对每一页都调用一次合并函数，而这样计数与合并将导致大量开销。所以，可以采用批处理操作，一次处理100页。partition-all函数就提供了这样的功能，将序列中的元素分批，构成多个序列。改进后的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(defn count-words [pages] (reduce (partial merge-with +) (pmap count-words-sequential (partition-all 100 pages))))</div></pre></td></tr></table></figure>
+<p>　　另外，补充一点，Clojure中有个fold函数实现了二分算法，可以将分组结果两两化简，直到剩下一个最终的结果。</p>
+<h4 id="3、函数式并发"><a href="#3、函数式并发" class="headerlink" title="3、函数式并发"></a>3、函数式并发</h4><p>　　在Java等命令式语言中，一般来说，求值顺序与其在代码中的顺序基本是一致的。但函数式语言如何安排求值顺序则是相对自由的。</p>
+<p>　　在纯粹的函数式语言中，函数都具有引用透明性————在任何调用函数的地方，都可以用函数运行的结果来替代函数的调用，而不会对程序产生副作用。考虑下面这个代码，(+ 1 2)和(+ 3 4)的计算顺序与结果没有关系，完全可以同时执行。这种执行方式称为<strong>数据流式编程</strong>，Clojure提供了future模型和promise模型来支持这种执行方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(+ (+ 1 2) (+ 3 4))</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Future模型</strong></li>
+</ul>
+<p>　　future就要提到future函数，future接受一段代码，并在一个单独的线程中执行，并返回一个对象，可以用deref或@来获取对象的值。对future对象解引用时，将阻塞当前线程，直到其代表的值变得可用。所以，前面求和的代码就变成这样：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">user=&gt; (let [a (future (+ 1 2)) b (future (+ 3 4))] (+ @a @b))</div></pre></td></tr></table></figure>
+<p> 　　let将求和结果赋值给a,b，然后求和。</p>
+<ul>
+<li><strong>Promise模型</strong></li>
+</ul>
+<p>　　promise模型也类似。但是使用promise对象的代码不会立即执行，直到其被赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">user=&gt; (def life (promise))</div><div class="line">#&apos;user/life</div><div class="line">user=&gt; (future (println &quot;The meaning of life is:&quot; @life))</div><div class="line">#&lt;core$future_call$reify_6110@224e59d9: :pending&gt;</div><div class="line">user=&gt; (deliver life 27)</div><div class="line">#&lt;core$promise$reify_6153@52c9f3c7: 27&gt;</div><div class="line">The meaning of life is: 27</div></pre></td></tr></table></figure>
+<p>　　其中，利用future函数创建线程是Clojure的惯例。</p>
+<p>　　在Java8中，利用有名的lambda表达式和stream API可以写出函数式代码。</p>
+<p>　　以上。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/08/17/七周七并发之一/" title="七周七并发之线程与锁">七周七并发之线程与锁</a></h2>
+                <p class="excerpt">
+                
+                　　线程与锁模型其实是对底层硬件运行过程的形式化。这种形式化既是该模型最大的优点也是它最大的缺点。
+1、 互斥和内存模型　　Java中，并发的基本单元是线程，可以将线程看作控制流。线程共享内存进行通信。线程的helloword版需要包括：
+1234mythread.start();Thread.yi&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2017-08-17T15:39:27.000Z" class="post-list__meta--date date">2017-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
+</span><a class="btn-border-small" href="/2017/08/17/七周七并发之一/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
