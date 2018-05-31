@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>javaFX初探 | orzn</title>
+    <title>vmware tools失效 | orzn</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="望你走出半生，归来仍是少年">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="javaFX初探 | orzn">
+    <meta name="twitter:title" content="vmware tools失效 | orzn">
     <meta name="twitter:description" content="望你走出半生，归来仍是少年">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="javaFX初探 | orzn">
+    <meta property="og:title" content="vmware tools失效 | orzn">
     <meta property="og:description" content="望你走出半生，归来仍是少年">
 
     
@@ -38,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://orzn.github.io/2017/08/25/javaFX-1/"/>
+    <link rel="canonical" href="http://orzn.github.io/2017/12/27/vmware/"/>
 
     
       
@@ -185,54 +185,26 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-08-25T08:39:07.752Z" class="post-list__meta--date date">2017-08-25</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/javaFX/">javaFX</a>
+      <time datetime="2017-12-27T12:37:22.000Z" class="post-list__meta--date date">2017-12-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/vmware/">vmware</a>
  </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">javaFX初探</h1>
+    <h1 class="post-title">vmware tools失效</h1>
   </header>
 
   <section class="post">
-    <p>　　JavaFX是Java的下一代图形用户界面工具包。JavaFX是一组图形和媒体API，我们可以用它们来创建和部署富客户端应用程序。虽说似乎是一种衰落的丰富互联网应用技术。但是因为一些原因，前段时间要写个界面，又因为最近java搞得比较多，就打算用java撸一个出来，特此做个记录。<br>　　除了javaFX，还有swing，不过相比javaFX，swing似乎更out一些。好像很久都没更新了。</p>
-<hr>
-<h4 id="开始步入正题"><a href="#开始步入正题" class="headerlink" title="　　　开始步入正题"></a>　　　开始步入正题</h4><ol>
-<li>开发环境配置<br>　　<br>　　从Java8开始，JDK(Java开发工具包)包括了JavaFX库。因此，要运行JavaFX应用程序，您只需要在系统中安装Java8或更高版本。除此之外，IDE(如Eclipse，NetBeans和idea)为JavaFX提供支持。<br>　　为IDE配置环境，我用的idea。Eclipse和NetBeans的在百度吧，这个还是挺好找的。首先，你需要下一个JavaFX Scene Builder。这是一种可视布局工具，就是一拖控件的。不要也行，但是作为一小白，还是用吧。之后，在idea中新建一个javaFX工程，创建完之后。</li>
-</ol>
-<p><img src="http://orzn.me/images/intellij-open-sb.gif" alt="intellij-open">　<br><img src="http://orzn.me/images/intellij-sb-config.gif" alt="intellij-sb-config"></p>
-<p>　　按上图操作，就可以在IDE中随时打开JavaFX Scene Builder，从而更方便的编辑自己的界面。 
-　　</p>
+    <p>不知道是因为安装了哪些东西，vmware的vmware tools突然不能用了，窗口不能自适应，也不能拖动文件进行复制。折腾了好久，open-vm-tools，vmware中的vmware-tools各种反复安装，也没卵用。后来，试了别人博客一种方法，总算成功了。ps：vmware版本10，ubuntu 是16.04。</p>
 <ol>
-<li>快速入门</li>
+<li>sudo apt-get autoremove open-vm-tools</li>
+<li>Install VMware Tools by following the usual method (Virtual Machine –&gt; Reinstall VMWare Tools)</li>
+<li>Reboot the VM</li>
+<li>sudo apt-get install open-vm-tools-desktop</li>
+<li>Reboot the VM, after the reboot copy/paste and drag/drop will work!</li>
 </ol>
-<p>　　本部分介绍如何写程序。实际创建工程完之后，会生成一个空的helloworld。里面包含三个文件：一个Main.java,一个Controller.java，一个sample.fxml。简单的说是这样，fxml定义界面外观，Controller定义操作时调用的函数，Main毫无疑问，程序的入口，加载下fxml。不过，实际上，也可以不用fxml,完全在main中写界面，但这就麻烦了。</p>
-<ul>
-<li>fxml</li>
-</ul>
-<p>　　从fxml名字就能看出，这和html很像。html是定义内容，css定义样式。在javaFX中，也可以使用css。不过，我没有用，也不是很了解。用fxml定义样式，首先要选择各种容器，我觉得这个起到的作用类似于div，之后再在里面放入各种组件。如果要对某一组件操作，比如点击后要调用某函数，需要给它定义id。</p>
-<ul>
-<li>controller</li>
-</ul>
-<p>　　controller其实比较简单，就是普通的java程序。不过需要注意的是，在里面要用到的组件，需要在前面定义一下，变量名就是id名。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@FXML</div><div class="line">private Label help;</div></pre></td></tr></table></figure>
-<p>　　FXML必须写。
-　　</p>
-<ul>
-<li>main</li>
-</ul>
-<p>　　main函数其实不需要怎么动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Parent root = FXMLLoader.load(getClass().getResource(&quot;sample.fxml&quot;));</div><div class="line">        primaryStage.setTitle(&quot;Hello World&quot;);</div><div class="line">        primaryStage.setScene(new Scene(root, 300, 275));</div><div class="line">        primaryStage.setResizable(false);</div><div class="line">        Image image= new Image(this.getClass().getResource(&quot;icon.jpg&quot;).toString(), 100, 150, false, false);</div><div class="line">        primaryStage.getIcons().add(image);</div><div class="line">        primaryStage.show();</div></pre></td></tr></table></figure>
-<p>　　可能会用到的常见的有两个，一个是第四行的函数来保证界面大小固定，第五行，第六行的代码是改程序的图标。</p>
-<p>　　最后，是给程序打包成exe。这个可折腾了我好一会儿。首先，先打成jar包，还要把Available elements中的东西都移到output root下，里面还要写Application class，后面的要与这个一致。把jar包转成exe用到的是jdk中自带的javafxpackager。
-　　</p>
-<blockquote>
-<p>javafxpackager -deploy -appclass <em>Test</em> -native image -srcdir <em>archive</em> -outdir <em>deploy</em> -outfile Test</p>
-</blockquote>
-<p>　　需要改的就一个Test,和输入文件、输出文件。Test是前面输入的Application class，输入文件是jar所在位置，输出就随意了。</p>
-<p>　　以上是对javaFX的一个基本介绍。</p>
 
   </section>
 
@@ -243,15 +215,15 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/12/27/vmware/" title="vmware tools失效">vmware tools失效</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="Java-AQS简介">Java-AQS简介</a></h2>
                 <p class="excerpt">
                 
-                不知道是因为安装了哪些东西，vmware的vmware tools突然不能用了，窗口不能自适应，也不能拖动文件进行复制。折腾了好久，open-vm-tools，vmware中的vmware-tools各种反复安装，也没卵用。后来，试了别人博客一种方法，总算成功了。ps：vmware版本10，ubun&hellip;
+                　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQ&hellip;
                 
                 </p>
-                <div class="post-list__meta"><time datetime="2017-12-27T12:37:22.000Z" class="post-list__meta--date date">2017-12-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/vmware/">vmware</a>
-</span><a class="btn-border-small" href="/2017/12/27/vmware/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Java-AQS/">Java AQS</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
                            
             </div>
         
@@ -259,15 +231,15 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/08/20/七周七并发之二/" title="七周七并发之函数式编程">七周七并发之函数式编程</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/08/25/javaFX-1/" title="javaFX初探">javaFX初探</a></h2>
                 <p class="excerpt">
                 
-                　　提到函数式编程，就要提到命令式编程。常见的C，Java都是命令式编程，代码由一些列改变全局状态的语句过程，而函数式编程则是将计算过程抽象成表达式求值。轮子哥是这么形容函数式语言的，“函数式语言都倾向于让你用函数来组成函数，而不是把函数看成是一个数据弄成另一个数据的过程。”函数式编程可以更容易做到&hellip;
+                　　JavaFX是Java的下一代图形用户界面工具包。JavaFX是一组图形和媒体API，我们可以用它们来创建和部署富客户端应用程序。虽说似乎是一种衰落的丰富互联网应用技术。但是因为一些原因，前段时间要写个界面，又因为最近java搞得比较多，就打算用java撸一个出来，特此做个记录。　　除了java&hellip;
                 
                 </p>
-                <div class="post-list__meta"><time datetime="2017-08-20T14:10:20.000Z" class="post-list__meta--date date">2017-08-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
-</span><a class="btn-border-small" href="/2017/08/20/七周七并发之二/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-08-25T08:39:07.752Z" class="post-list__meta--date date">2017-08-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/javaFX/">javaFX</a>
+</span><a class="btn-border-small" href="/2017/08/25/javaFX-1/">继续阅读</a></div>
                        
             </div>
         
