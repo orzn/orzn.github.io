@@ -247,7 +247,7 @@
 </ul>
 <p>　　在这儿对一些常用的NoSQL数据库进行总结：<br>类型 | 代表 | 特点</p>
 <ul>
-<li>| :-: | -<br>列存储 | Hbase Cassandra |  顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。<br>键值对存储 | Redis MemcacheDB | 可以通过key快速查询到其value，存储和不管value的格式<br>图存储 | Neo4J FlockDB | 图形关系的最佳存储，使用传统关系数据库来解决的话性能低下<br>文档存储 | MongoDB CouchDB | 文档存储一般用类似json的格式存储，内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。<br>对象存储 | db4o Versant | 通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。<br>xml数据库 | Berkeley DB | 高效的存储XML数据，并支持XML的内部查询语法，如XQuery, Xpath。</li>
+<li>| :-: | - |<br>列存储 | Hbase Cassandra |  顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。<br>键值对存储 | Redis MemcacheDB | 可以通过key快速查询到其value，存储和不管value的格式<br>图存储 | Neo4J FlockDB | 图形关系的最佳存储，使用传统关系数据库来解决的话性能低下<br>文档存储 | MongoDB CouchDB | 文档存储一般用类似json的格式存储，内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。<br>对象存储 | db4o Versant | 通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。<br>xml数据库 | Berkeley DB | 高效的存储XML数据，并支持XML的内部查询语法，如XQuery, Xpath。</li>
 </ul>
 <h4 id="2、MongoDB简介"><a href="#2、MongoDB简介" class="headerlink" title="2、MongoDB简介"></a>2、MongoDB简介</h4><p>　　MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于JSON对象。字段值可以包含其他文档，数组及文档数组。</p>
 <p>　　MongoDB 安装完成后，通过MongoDB Shell来对MongoDB进行操作和管理，当./mongo进入后台后，它默认会链接到test文档（数据库）。</p>
