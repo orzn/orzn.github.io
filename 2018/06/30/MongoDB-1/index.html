@@ -231,23 +231,55 @@
 <p>　　上面是关系型数据库和非关系型数据库的一些特点对比，有些也不是很对应，看看就好。MongoDB是个分布式文件存储结构，也满足CAP定理。</p>
 <p>　　<strong>CAP理论</strong>的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求，最多只能同时较好的满足两个。</p>
 <p>NoSQL的优点：</p>
-<ul>
-<li>高可扩展性</li>
-<li>分布式计算</li>
-<li>低成本</li>
-<li>架构的灵活性，半结构化数据</li>
-<li>没有复杂的关系</li>
-</ul>
+<blockquote>
+<p>高可扩展性<br>  分布式计算<br>  低成本<br>  架构的灵活性，半结构化数据<br>  没有复杂的关系</p>
+</blockquote>
 <p>缺点：</p>
-<ul>
-<li>没有标准化</li>
-<li>有限的查询功能（so far）</li>
-<li>最终一致是不直观的程序</li>
-</ul>
-<p>　　在这儿对一些常用的NoSQL数据库进行总结：<br>类型 | 代表 | 特点</p>
-<ul>
-<li>| :-: | -<br>列存储 | Hbase Cassandra |  顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。<br>键值对存储 | Redis MemcacheDB | 可以通过key快速查询到其value，存储和不管value的格式<br>图存储 | Neo4J FlockDB | 图形关系的最佳存储，使用传统关系数据库来解决的话性能低下<br>文档存储 | MongoDB CouchDB | 文档存储一般用类似json的格式存储，内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。<br>对象存储 | db4o Versant | 通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。<br>xml数据库 | Berkeley DB | 高效的存储XML数据，并支持XML的内部查询语法，如XQuery, Xpath。</li>
-</ul>
+<blockquote>
+<p>没有标准化<br>  有限的查询功能（so far）<br>  最终一致是不直观的程序</p>
+</blockquote>
+<p>　　在这儿对一些常用的NoSQL数据库进行总结：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:center">代表</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列存储</td>
+<td style="text-align:center">Hbase Cassandra</td>
+<td>顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。</td>
+</tr>
+<tr>
+<td>键值对存储</td>
+<td style="text-align:center">Redis MemcacheDB</td>
+<td>可以通过key快速查询到其value，存储和不管value的格式 </td>
+</tr>
+<tr>
+<td>图存储</td>
+<td style="text-align:center">Neo4J FlockDB</td>
+<td>图形关系的最佳存储，使用传统关系数据库来解决的话性能低下</td>
+</tr>
+<tr>
+<td>文档存储</td>
+<td style="text-align:center">MongoDB CouchDB</td>
+<td>文档存储一般用类似json的格式存储，内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。</td>
+</tr>
+<tr>
+<td>对象存储</td>
+<td style="text-align:center">db4o Versant</td>
+<td>通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。</td>
+</tr>
+<tr>
+<td>xml数据库</td>
+<td style="text-align:center">Berkeley DB</td>
+<td>高效的存储XML数据，并支持XML的内部查询语法，如XQuery, Xpath。</td>
+</tr>
+</tbody>
+</table>
 <h4 id="2、MongoDB简介"><a href="#2、MongoDB简介" class="headerlink" title="2、MongoDB简介"></a>2、MongoDB简介</h4><p>　　MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于JSON对象。字段值可以包含其他文档，数组及文档数组。</p>
 <p>　　MongoDB 安装完成后，通过MongoDB Shell来对MongoDB进行操作和管理，当./mongo进入后台后，它默认会链接到test文档（数据库）。</p>
 <h5 id="MongoDB概念"><a href="#MongoDB概念" class="headerlink" title="MongoDB概念"></a>MongoDB概念</h5><table>
