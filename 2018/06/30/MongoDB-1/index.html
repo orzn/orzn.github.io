@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>MongoDB入门 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MongoDB入门 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="MongoDB入门 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/06/30/MongoDB-1/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-06-30T07:36:20.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/MongoDB/">MongoDB</a>, <a class="tag-link" href="/tags/database/">database</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">MongoDB入门</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="1、相关基本概念"><a href="#1、相关基本概念" class="headerlink" title="1、相关基本概念"></a>1、相关基本概念</h4><p>　　MongoDB 是一个基于分布式文件存储的数据库。由 C++语言编写。<strong>旨在为WEB应用提供可扩展的高性能数据存储解决方案</strong>。<br>　　MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
+<table>
+<thead>
+<tr>
+<th>RDBMS</th>
+<th style="text-align:center">NoSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高度组织化结构化数据</td>
+<td style="text-align:center">没有预定义的模式</td>
+</tr>
+<tr>
+<td>结构化查询查询语言</td>
+<td style="text-align:center">没有声明性查询语言 </td>
+</tr>
+<tr>
+<td>严格的一致性</td>
+<td style="text-align:center">最终一致性，非ACID属性</td>
+</tr>
+<tr>
+<td>基础事务</td>
+<td style="text-align:center">高性能，高可用性和可伸缩性</td>
+</tr>
+<tr>
+<td>数据和关系存储在单独的表中</td>
+<td style="text-align:center">键值对存储，列存储，文档存储，图形数据库。</td>
+</tr>
+</tbody>
+</table>
+<p>　　上面是关系型数据库和非关系型数据库的一些特点对比，有些也不是很对应，看看就好。MongoDB是个分布式文件存储结构，也满足CAP定理。</p>
+<p>　　<strong>CAP理论</strong>的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求，最多只能同时较好的满足两个。</p>
+<p>NoSQL的优缺点</p>
+<p>优点：</p>
+<ul>
+<li>高可扩展性</li>
+<li>分布式计算</li>
+<li>低成本</li>
+<li>架构的灵活性，半结构化数据</li>
+<li>没有复杂的关系</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>没有标准化</li>
+<li>有限的查询功能（so far）</li>
+<li>最终一致是不直观的程序</li>
+</ul>
+<p>　　在这儿对一些常用的NoSQL数据库进行总结：<br>类型 | 代表 | 特点</p>
+<ul>
+<li>| :-: | -<br>列存储 | Hbase Cassandra |  顾名思义，是按列存储数据的。最大的特点是方便存储结构化和半结构化数据，方便做数据压缩，对针对某一列或者某几列的查询有非常大的IO优势。<br>键值对存储 | Redis MemcacheDB | 可以通过key快速查询到其value，存储和不管value的格式<br>图存储 | Neo4J FlockDB | 图形关系的最佳存储，使用传统关系数据库来解决的话性能低下<br>文档存储 | MongoDB CouchDB | 文档存储一般用类似json的格式存储，内容是文档型的。这样也就有有机会对某些字段建立索引，实现关系数据库的某些功能。<br>对象存储 | db4o Versant | 通过类似面向对象语言的语法操作数据库，通过对象的方式存取数据。<br>xml数据库 | Berkeley DB | 高效的存储XML数据，并支持XML的内部查询语法，如XQuery, Xpath。</li>
+</ul>
+<h4 id="2、MongoDB简介"><a href="#2、MongoDB简介" class="headerlink" title="2、MongoDB简介"></a>2、MongoDB简介</h4><p>　　MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于JSON对象。字段值可以包含其他文档，数组及文档数组。</p>
+<p>　　MongoDB 安装完成后，通过MongoDB Shell来对MongoDB进行操作和管理，当./mongo进入后台后，它默认会链接到test文档（数据库）。</p>
+<h5 id="MongoDB概念"><a href="#MongoDB概念" class="headerlink" title="MongoDB概念"></a>MongoDB概念</h5><table>
+<thead>
+<tr>
+<th>SQL术语</th>
+<th style="text-align:center">MongoDB术语</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database</td>
+<td style="text-align:center">database</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>table</td>
+<td style="text-align:center">collection</td>
+<td>数据库表/集合</td>
+</tr>
+<tr>
+<td>row</td>
+<td style="text-align:center">document</td>
+<td>数据库记录行/文档</td>
+</tr>
+<tr>
+<td>colume</td>
+<td style="text-align:center">field</td>
+<td>数据字段/域</td>
+</tr>
+<tr>
+<td>index</td>
+<td style="text-align:center">index</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>table joins</td>
+<td style="text-align:center"></td>
+<td>表连接，MongoDB不支持</td>
+</tr>
+<tr>
+<td>primary key</td>
+<td style="text-align:center">primary key</td>
+<td>主键，MongoDB自动将_id字段设置为主键</td>
+</tr>
+</tbody>
+</table>
+<p>通过下图实例，我们也可更直观的了解Mongo中的一些概念：<br><img src="http://www.runoob.com/wp-content/uploads/2013/10/Figure-1-Mapping-Table-to-Collection-1.png" alt="mongo"></p>
+<h5 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h5><p>　　一个mongoDB中可以建立多个数据库，MongoDB的默认数据库为db。MongoDB的单个实例可以容纳多个独立的数据库，每一个都有自己的集合和权限，不同的数据库也放置在不同的文件中。</p>
+<ul>
+<li>show dbs 命令可以显示所有数据库库的列表</li>
+<li>db 显示当前数据库对象或集合</li>
+<li>use 数据库名 连接到一个指定的数据库</li>
+</ul>
+<p>mongodb中有一些保留的数据库名。</p>
+<ol>
+<li>admin： 当Mongod启用auth选项时，用户需要创建数据库帐号，访问时根据帐号信息来鉴权，而数据库帐号信息就存储在admin数据库下。要是将一个用户添加到这个数据库，这个用户自动继承所有数据库的权限。一些特定的服务器端命令也只能从这个数据库运行，比如列出所有的数据库或者关闭服务器。</li>
+<li>local: 这个数据永远不会被复制，可以用来存储限于本地单台服务器的任意集合.</li>
+<li>config：当Mongo用于分片设置时，config数据库在内部使用，用于保存分片的相关信息。</li>
+</ol>
+<h5 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h5><p>　　文档，即一条记录，通常意义上的一行数据。MongoDB的文档不需要设置相同的字段，相同的字段不需要相同的数据类型，这与关系型数据库有很大的区别，也是 MongoDB 非常突出的特点。</p>
+<h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><p>　　集合就是 MongoDB 文档组，即表。集合没有固定的结构，这意味着你在对集合可以插入不同格式和类型的数据，但通常情况下我们插入集合的数据都会有一定的关联性。<br>比如，我们可以将以下不同数据结构的文档插入到集合中：</p>
+<blockquote>
+<p>{“site”:”www.baidu.com”}<br>{“site”:”www.google.com”,”name”:”Google”}<br>{“site”:”www.runoob.com”,”name”:”菜鸟教程”,”num”:5}</p>
+</blockquote>
+<p>　　集合名不能为空，不能含有\0字符，这个字符表示集合名的结尾，集合不能以“system”开头，这是系统保留字符。<br>集合中有个Capped collections，即固定大小的collection。它有很高的性能以及队列过期的特性。它非常适合类似记录日志的功能 和标准的collection不同，你必须要显式的创建一个capped collection， 指定一个collection的大小，单位是字节。collection的数据存储空间值提前分配的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createCollection(&quot;mycoll&quot;, &#123;capped:true, size:100000&#125;)</div></pre></td></tr></table></figure></p>
+<p>capped collections不允许删除文档（行），但可以drop()掉所有行。</p>
+<h5 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h5><p>　　数据库的一些信息。它们使用了系统的命名空间：dbname.system.*。<br>集合命名空间 | 描述</p>
+<ul>
+<li>| :-:<br>dbname.system.namespaces | 列出所有名字空间<br>dbname.system.indexes | 列出所有索引<br>dbname.system.profile | 包含数据库概要信息<br>dbname.system.users | 列出所有可访问数据库的用户<br>dbname.local.sources | 包含复制对端（slave）的服务器信息和状态。</li>
+</ul>
+<h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><p>　　String,Integer,Boolean,Double,Min/Max keys（将一个值与 BSON（二进制的 JSON）元素的最低值和最高值相对比。）,Array（将数组或列表或多个值存储为一个键）,Timestamp（记录文档修改或添加的具体时间）,Object（用于内嵌文档）,Null,Symbol（该数据类型基本上等同于字符串类型，但不同的是，它一般用于采用特殊符号类型的语言。）,Date,Object ID（对象 ID。用于创建文档的 ID。）,Binary Data（二进制数据。用于存储二进制数据。）,Code（代码类型。用于在文档中存储 JavaScript 代码。）,Regular expression（正则表达式类型。用于存储正则表达式。）。</p>
+<blockquote>
+<p>时间戳要用于 MongoDB 内部使用。在大多数情况下的应用开发中，你可以使用 BSON 日期类型。<br>日期，表示当前距离 Unix新纪元（1970年1月1日）的毫秒数。日期类型是有符号的, 负数表示 1970 年之前的日期。</p>
+</blockquote>
+<h4 id="3、基本操作"><a href="#3、基本操作" class="headerlink" title="3、基本操作"></a>3、基本操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">use test //创建test数据库或切换此数据库</div><div class="line">db.test.insert(&#123;&quot;name&quot;:&quot;小明&quot;&#125;) //插入数据，若集合test不存在，会创建</div><div class="line">show dbs //只有有数据的数据库才显示</div><div class="line">db.dropDatabase() //删除当前数据库</div><div class="line">show tables //显示当前数据库中的集合（表）</div><div class="line">db.collection.drop() //删除集合collection</div><div class="line">db.createCollection(name,options) //name是集合名称 </div><div class="line">db.createCollection(&quot;mycol&quot;, &#123; capped : true, autoIndexId : true, size : 6142800, max : 10000 &#125; ) //指定capped，必须设定size, max指集合中包含文档的最大数量。</div><div class="line">db.col.insert(&#123;title: &apos;MongoDB 教程&apos;, </div><div class="line">    description: &apos;MongoDB 是一个 Nosql 数据库&apos;,</div><div class="line">    by: &apos;菜鸟教程&apos;,</div><div class="line">    url: &apos;http://www.runoob.com&apos;,</div><div class="line">    tags: [&apos;mongodb&apos;, &apos;database&apos;, &apos;NoSQL&apos;],</div><div class="line">    likes: 100</div><div class="line">&#125;) //col是集合，若集合不在数据库中，会自动创建该集合并插入文档</div><div class="line">db.col.find() //读取文档</div><div class="line">db.col.update(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;,&#123;$set:&#123;&apos;title&apos;:&apos;MongoDB&apos;&#125;&#125;) //更新title</div><div class="line">db.col.save(&#123;</div><div class="line">    &quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),</div><div class="line">    &quot;title&quot; : &quot;MongoDB&quot;,</div><div class="line">&#125;) //更新此id的数据</div><div class="line">db.col.remove(&#123;&apos;title&apos;:&apos;MongoDB 教程&apos;&#125;) //删除</div><div class="line">db.col.remove(&#123;&#125;) //删除所有</div><div class="line">//条件操作符 &gt; $gt ; &lt; $lt ; &gt;= $gte ; &lt;= $lte </div><div class="line">db.col.find(&#123;&quot;likes&quot; : &#123;$gt : 100&#125;&#125;) </div><div class="line">db.col.find(&#123;likes : &#123;$lt :200, $gt : 100&#125;&#125;)</div><div class="line">db.col.find(&#123;$or:[&#123;&quot;by&quot;:&quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty() //$or就是or</div><div class="line">db.col.find(&#123;&quot;likes&quot;: &#123;$gt:50&#125;, $or: [&#123;&quot;by&quot;: &quot;菜鸟教程&quot;&#125;,&#123;&quot;title&quot;: &quot;MongoDB 教程&quot;&#125;]&#125;).pretty()</div></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/06/08/protobuf-serializable/" title="protobuf和protostuff简介[转]">protobuf和protostuff简介[转]</a></h2>
+                <p class="excerpt">
+                
+                　　在我们的开发过程中，序列化是经常需要处理的问题，比如在做分布式访问数据时，或者是在做redis缓存存储数据时，如果我们涉及的知识面不够广的话，可能会简单的使用JDK的序列化，也即在需要序列化的类上implements Serializable接口去实现序列化，我想说的是这种方式在小系统中尚且可以&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-06-08T14:32:21.000Z" class="post-list__meta--date date">2018-06-08</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/protobuf/">protobuf</a>, <a class="tag-link" href="/tags/serializable/">serializable</a>
+</span><a class="btn-border-small" href="/2018/06/08/protobuf-serializable/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
