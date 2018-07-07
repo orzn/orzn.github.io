@@ -187,105 +187,21 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/08/20/七周七并发之二/" title="link to post.title">七周七并发之函数式编程</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/07/tomcat-resin-web容器/" title="link to post.title">tomcat与resin</a></h2>
       <p class="excerpt">
     
-      　　提到函数式编程，就要提到命令式编程。常见的C，Java都是命令式编程，代码由一些列改变全局状态的语句过程，而函数式编程则是将计算过程抽象成表达式求值。轮子哥是这么形容函数式语言的，“函数式语言都倾向于让你用函数来组成函数，而不是把函数看成是一个数据弄成另一个数据的过程。”函数式编程可以更容易做到线程安全，因此特别适合于并发编程。
-1、抛弃可变状态　　函数式编程里，没有可变状态。为了体验函数式编&hellip;
+      　　Tomcat是Apache鼎力支持的Java Web应用服务器，由于有了Sun的参与和支持，最新的Servlet和JSP规范总是能在Tomcat中得到体现，而且性能稳定，免费，又由于它优秀的稳定性以及丰富的文档资料，广泛的使用人群，从而在开源领域受到最广泛的青睐。　　Tomcat运行时占用的系统资源小，扩展性好，支持负载平衡与邮件服务等开发应用系统常用的功能；而且它还在不断的改进和完善中，任何&hellip;
     
       </p>
-      <div class="post-list__meta"><time datetime="2017-08-20T14:10:20.000Z" class="post-list__meta--date date">2017-08-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
-</span><a class="btn-border-small" href="/2017/08/20/七周七并发之二/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/08/17/七周七并发之一/" title="link to post.title">七周七并发之线程与锁</a></h2>
-      <p class="excerpt">
-    
-      　　线程与锁模型其实是对底层硬件运行过程的形式化。这种形式化既是该模型最大的优点也是它最大的缺点。
-1、 互斥和内存模型　　Java中，并发的基本单元是线程，可以将线程看作控制流。线程共享内存进行通信。线程的helloword版需要包括：
-1234mythread.start();Thread.yield();System.out.println(&quot;hello world!&quot;);mythread.&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-08-17T15:39:27.000Z" class="post-list__meta--date date">2017-08-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/七周七并发/">七周七并发</a>
-</span><a class="btn-border-small" href="/2017/08/17/七周七并发之一/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/18/java/" title="link to post.title">Java ConcurrentModificationException</a></h2>
-      <p class="excerpt">
-    
-      1. 出现原因　　具体源码就不剖析了，直接说结果。原因是调用list.remove()方法导致modCount和expectedModCount的值不一致。注意，像使用for-each进行迭代实际上也会出现这种问题。所以，在迭代的过程中就不要使用list.remove()方法。
-2. 单线程环境下的解决办法　　既然知道原因了，那么如何解决呢？
-　　其实很简单，细心的朋友可能发现在Itr类中也给出了&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-05-18T14:26:32.003Z" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>
-</span><a class="btn-border-small" href="/2017/05/18/java/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/17/markov/" title="link to post.title">markov</a></h2>
-      <p class="excerpt">
-    
-      马尔科夫也是一个经常遇到的名词了，马尔科夫过程，马尔科夫随机场等等，了解过，但一知半解，仍不是很理解，趁着学习图像处理这门课，把这些相关的东西也好好学学，整理整理。
-马尔可夫链，因安德烈·马尔可夫（A.A.Markov，1856－1922）得名，是指数学中具有马尔可夫性质的离散事件随机过程。该过程中，在给定当前知识或信息的情况下，过去（即当前以前的历史状态）对于预测将来（即当前以后的未来状态）是无&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-05-17T15:39:27.000Z" class="post-list__meta--date date">2017-05-17</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/图像处理/">图像处理</a>
-</span><a class="btn-border-small" href="/2017/05/17/markov/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/09/markdown/" title="link to post.title">markdown</a></h2>
-      <p class="excerpt">
-    
-      　　Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。当然，我使用这个主要是因为github的锅。别的不多说了，这里简单介绍一些Markdown的基本语法：  
-1. 标题　　对于标题，有两种写法：Setext和atx形式。Setext形式是利用底线的形式，利用=（最高阶标题）和-（第二节标题）；Atx形式是在行首插入1到6个#，对&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-05-09T05:09:16.000Z" class="post-list__meta--date date">2017-05-09</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/markdown/">markdown</a>
-</span><a class="btn-border-small" href="/2017/05/09/markdown/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/08/hello-world/" title="link to post.title">Hello World</a></h2>
-      <p class="excerpt">
-    
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-05-07T16:50:17.733Z" class="post-list__meta--date date">2017-05-08</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/05/08/hello-world/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2018-07-07T04:27:07.000Z" class="post-list__meta--date date">2018-07-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/resin/">resin</a>, <a class="tag-link" href="/tags/tomcat/">tomcat</a>, <a class="tag-link" href="/tags/web容器/">web容器</a>
+</span><a class="btn-border-small" href="/2018/07/07/tomcat-resin-web容器/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
-    
-    <span class="pagination__page-number" > 2 / 2 </span>
-    
-  </nav>
 
 
 </div>

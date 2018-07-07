@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>tomcat与resin | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="tomcat与resin | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="tomcat与resin | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/07/07/tomcat-resin-web容器/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-07-07T04:27:07.000Z" class="post-list__meta--date date">2018-07-07</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/resin/">resin</a>, <a class="tag-link" href="/tags/tomcat/">tomcat</a>, <a class="tag-link" href="/tags/web容器/">web容器</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">tomcat与resin</h1>
+  </header>
+
+  <section class="post">
+    <p>　　Tomcat是Apache鼎力支持的Java Web应用服务器，由于有了Sun的参与和支持，最新的Servlet和JSP规范总是能在Tomcat<br>中得到体现，而且性能稳定，免费，又由于它优秀的稳定性以及丰富的文档资料，广泛的使用人群，从而在开源领域受到最广泛的青睐。<br>　　Tomcat运行时占用的系统资源小，扩展性好，支持负载平衡与邮件服务等开发应用系统常用的功能；而且它还在不断的改进和完善中，任何一个感兴趣的程序员都可以更改它或在其中加入新的功能。<br>  Resin也仅仅是一个Servlet容器，然而由于它优秀的运行速度，使得它在轻量级Java Web领域备受喜爱，特别是在互联网Web服务领域，众多知名公司都采用其作为他们的Java Web应用服务器，譬如163、ku6等。<br>  Resin也可以和许多其他的WEB服务器一起工作，比如Apache server和IIS等。Resin支持负载平衡（Load balancing），可以增加WEB站点的可靠性。方法是增加服务器的数量。比如一台SERVER的错误率是1%的话，那么支持负载平衡的两个Resin服务器就可以使错误率降到0.01%。<br>  总的来说，有这么几个区别：</p>
+<ol>
+<li>resin速度快</li>
+<li>resin报错十分简洁明确</li>
+<li>resin对中文支持好</li>
+<li>resin支持自动编译Servlet和bean</li>
+<li>tomcat还不支持j2ee，至少在6以前还是这样的。</li>
+</ol>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/06/30/MongoDB-1/" title="MongoDB入门">MongoDB入门</a></h2>
+                <p class="excerpt">
+                
+                1、相关基本概念　　MongoDB 是一个基于分布式文件存储的数据库。由 C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。　　MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
+
+
+
+RDBMS
+NoSQL
+
+
+
+
+高度&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-06-30T07:36:20.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/MongoDB/">MongoDB</a>, <a class="tag-link" href="/tags/database/">database</a>
+</span><a class="btn-border-small" href="/2018/06/30/MongoDB-1/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
