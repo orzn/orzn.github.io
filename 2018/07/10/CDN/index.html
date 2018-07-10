@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>tomcat与resin | orzn</title>
+    <title>CDN | orzn</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="望你走出半生，归来仍是少年">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="tomcat与resin | orzn">
+    <meta name="twitter:title" content="CDN | orzn">
     <meta name="twitter:description" content="望你走出半生，归来仍是少年">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="tomcat与resin | orzn">
+    <meta property="og:title" content="CDN | orzn">
     <meta property="og:description" content="望你走出半生，归来仍是少年">
 
     
@@ -38,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://orzn.github.io/2018/07/07/tomcat-resin-web容器/"/>
+    <link rel="canonical" href="http://orzn.github.io/2018/07/10/CDN/"/>
 
     
       
@@ -185,28 +185,21 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-07-07T04:27:07.000Z" class="post-list__meta--date date">2018-07-07</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/resin/">resin</a>, <a class="tag-link" href="/tags/tomcat/">tomcat</a>, <a class="tag-link" href="/tags/web容器/">web容器</a>
+      <time datetime="2018-07-10T15:04:00.000Z" class="post-list__meta--date date">2018-07-10</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/CDN/">CDN</a>
  </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">tomcat与resin</h1>
+    <h1 class="post-title">CDN</h1>
   </header>
 
   <section class="post">
-    <p>　　Tomcat是Apache鼎力支持的Java Web应用服务器，由于有了Sun的参与和支持，最新的Servlet和JSP规范总是能在Tomcat<br>中得到体现，而且性能稳定，免费，又由于它优秀的稳定性以及丰富的文档资料，广泛的使用人群，从而在开源领域受到最广泛的青睐。<br>　　Tomcat运行时占用的系统资源小，扩展性好，支持负载平衡与邮件服务等开发应用系统常用的功能；而且它还在不断的改进和完善中，任何一个感兴趣的程序员都可以更改它或在其中加入新的功能。<br>  Resin也仅仅是一个Servlet容器，然而由于它优秀的运行速度，使得它在轻量级Java Web领域备受喜爱，特别是在互联网Web服务领域，众多知名公司都采用其作为他们的Java Web应用服务器，譬如163、ku6等。<br>  Resin也可以和许多其他的WEB服务器一起工作，比如Apache server和IIS等。Resin支持负载平衡（Load balancing），可以增加WEB站点的可靠性。方法是增加服务器的数量。比如一台SERVER的错误率是1%的话，那么支持负载平衡的两个Resin服务器就可以使错误率降到0.01%。<br>  总的来说，有这么几个区别：</p>
-<blockquote>
-<ol>
-<li>resin速度快</li>
-<li>resin报错十分简洁明确</li>
-<li>resin对中文支持好</li>
-<li>resin支持自动编译Servlet和bean</li>
-<li>tomcat还不支持j2ee，至少在6以前还是这样的。</li>
-</ol>
-</blockquote>
+    <p>因为在公司项目代码里看到了CDN，对此也不了解，遂记之。</p>
+<p>CDN，全称Content Delivery Network，内容分发网络。是将网站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。<br>当用户访问某网站时，url经服务器解析获取对应cname域名，而这里的cname指向的是CDN负载均衡设备的IP地址。该服务器会为用户选择一台合适的缓存服务器，用户向该服务器发出请求。若此服务器没有缓存用户想要的内容，会向上一级请求，并将内容拉到本地。<br>流程如下图：<br><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/27101/cn_zh/1517555239425/1.png" alt="CDN流程图"></p>
+<p>先这样。 </p>
 
   </section>
 
@@ -214,45 +207,20 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/07/10/CDN/" title="CDN">CDN</a></h2>
-                <p class="excerpt">
-                
-                因为在公司项目代码里看到了CDN，对此也不了解，遂记之。
-CDN，全称Content Delivery Network，内容分发网络。是将网站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直&hellip;
-                
-                </p>
-                <div class="post-list__meta"><time datetime="2018-07-10T15:04:00.000Z" class="post-list__meta--date date">2018-07-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/CDN/">CDN</a>
-</span><a class="btn-border-small" href="/2018/07/10/CDN/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/06/30/MongoDB-1/" title="MongoDB入门">MongoDB入门</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/07/07/tomcat-resin-web容器/" title="tomcat与resin">tomcat与resin</a></h2>
                 <p class="excerpt">
                 
-                1、相关基本概念　　MongoDB 是一个基于分布式文件存储的数据库。由 C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。　　MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
-
-
-
-RDBMS
-NoSQL
-
-
-
-
-高度&hellip;
+                　　Tomcat是Apache鼎力支持的Java Web应用服务器，由于有了Sun的参与和支持，最新的Servlet和JSP规范总是能在Tomcat中得到体现，而且性能稳定，免费，又由于它优秀的稳定性以及丰富的文档资料，广泛的使用人群，从而在开源领域受到最广泛的青睐。　　Tomcat运行时占用的系统&hellip;
                 
                 </p>
-                <div class="post-list__meta"><time datetime="2018-06-30T07:36:20.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/MongoDB/">MongoDB</a>, <a class="tag-link" href="/tags/database/">database</a>
-</span><a class="btn-border-small" href="/2018/06/30/MongoDB-1/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-07-07T04:27:07.000Z" class="post-list__meta--date date">2018-07-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/resin/">resin</a>, <a class="tag-link" href="/tags/tomcat/">tomcat</a>, <a class="tag-link" href="/tags/web容器/">web容器</a>
+</span><a class="btn-border-small" href="/2018/07/07/tomcat-resin-web容器/">继续阅读</a></div>
                        
             </div>
         
