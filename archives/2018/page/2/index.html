@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>CDN | orzn</title>
+    <title>orzn | 兴趣使然</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="望你走出半生，归来仍是少年">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CDN | orzn">
+    <meta name="twitter:title" content="orzn | 兴趣使然">
     <meta name="twitter:description" content="望你走出半生，归来仍是少年">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CDN | orzn">
+    <meta property="og:title" content="orzn | 兴趣使然">
     <meta property="og:description" content="望你走出半生，归来仍是少年">
 
     
@@ -38,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://orzn.github.io/2018/07/10/CDN/"/>
+    <link rel="canonical" href="http://orzn.github.io"/>
 
     
       
@@ -181,70 +181,39 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2018-07-10T15:04:00.000Z" class="post-list__meta--date date">2018-07-10</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/CDN/">CDN</a>
- </span>
-      <span class="page-pv">
-      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">CDN</h1>
-  </header>
-
-  <section class="post">
-    <p>因为在公司项目代码里看到了CDN，对此也不了解，遂记之。</p>
-<p>CDN，全称Content Delivery Network，内容分发网络。是将网站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。<br>当用户访问某网站时，url经服务器解析获取对应cname域名，而这里的cname指向的是CDN负载均衡设备的IP地址。该服务器会为用户选择一台合适的缓存服务器，用户向该服务器发出请求。若此服务器没有缓存用户想要的内容，会向上一级请求，并将内容拉到本地。<br>流程如下图：<br><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/27101/cn_zh/1517555239425/1.png" alt="CDN流程图"></p>
-<p>先这样。 </p>
-
-  </section>
-
-</article>
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/07/11/java-serializable/" title="java序列化须知">java序列化须知</a></h2>
-                <p class="excerpt">
-                
-                子类父类　　若父类实现了Serializable，子类不需要实现Serializable即可实现序列化。反之，父类未实现，子类实现了，序列化时，不会序列化父类的属性。如果父类不实现序列化，就必须有默认的无参构造函数，否则子类在继承Serializable接口后会报错。若想序列化父类的属性，需要自己实&hellip;
-                
-                </p>
-                <div class="post-list__meta"><time datetime="2018-07-11T11:57:10.000Z" class="post-list__meta--date date">2018-07-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/serializable/">serializable</a>
-</span><a class="btn-border-small" href="/2018/07/11/java-serializable/">继续阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/07/07/ejb-rmi-soa/" title="从ejb到soa">从ejb到soa</a></h2>
-                <p class="excerpt">
-                
-                之前提到tomcat不支持j2ee，指的是tomcat不支持EJB。那么问题来了，EJB是啥？
-
-EJB的概念EJB，Enterprise JavaBean，是一种描述了构建应用组件要解决的标准。是一个放在服务器端、封装了业务逻辑的组件，供客户端去调用。EJB不仅仅可作为B/S结构的应用，也可作为C&hellip;
-                
-                </p>
-                <div class="post-list__meta"><time datetime="2018-07-07T10:30:08.000Z" class="post-list__meta--date date">2018-07-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ejb/">ejb</a>, <a class="tag-link" href="/tags/rmi/">rmi</a>, <a class="tag-link" href="/tags/soa/">soa</a>
-</span><a class="btn-border-small" href="/2018/07/07/ejb-rmi-soa/">继续阅读</a></div>
-                       
-            </div>
-        
-     
-   
-   
+  <ol class="post-list post">
   
-</section>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="link to post.title">Java-AQS简介</a></h2>
+      <p class="excerpt">
+    
+      　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQS。
+　　前面提到的FIFO队列，节点Node保存着线程引用和线程状态。表示每一个等待锁的线程。No&hellip;
+    
+      </p>
+      <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+  </ol>
+
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
+    
+    <span class="pagination__page-number" > 2 / 2 </span>
+    
+  </nav>
+
+
+</div>
 
 
             
