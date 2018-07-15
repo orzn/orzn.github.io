@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>聊聊红黑树 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="聊聊红黑树 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="聊聊红黑树 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/03/14/红黑树-数据结构/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">聊聊红黑树</h1>
+  </header>
+
+  <section class="post">
+    <p>红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。<br>红黑树需要满足五个性质：</p>
+<ol>
+<li>节点是红色或者黑色。</li>
+<li>根节点是黑色。</li>
+<li>每个叶节点（空节点）是黑色。</li>
+<li>每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。</li>
+<li>从任一节点到每个叶节点所有路径都包含相同数目的黑色节点。</li>
+</ol>
+<blockquote>
+<p>为什么说红黑树能在对数时间内完成基本操作呢？首先来说为什么红黑树的高度是lgN（N是节点数）。先设从某节点x出发，到叶节点的路径上黑色节点的个数称为黑高度，记为bh(x)。首先用数学归纳法可以证明：以结点x为根的子树中至少包含2^bh(x) -1个内结点。<br>其次，假设红黑树的高度为h（根结点的高度为0），由性质④可知：从根结点(不包括根)到叶结点的任一简单路径上至少有一半的结点是黑色的，从而根的黑高度至少是 h/2。<br>再根据上面数学归纳法的结论：红黑树的根结点的子树中至少包含 2^h/2-1 个内结点。<br>从而有： n &gt;= 2^h/2 -1，  得出 h &lt;= 2log(n+1)，从而证明了红黑树的高度是O(logN)。</p>
+</blockquote>
+<p>这里我不想提红黑树的具体插入删除，而想聊一下hashmap与红黑树。直接看hashmap的put方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">final V putVal(int hash, K key, V value, boolean onlyIfAbsent,</div><div class="line">                   boolean evict) &#123;</div><div class="line">        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;</div><div class="line">        //table为空就创建</div><div class="line">        if ((tab = table) == null || (n = tab.length) == 0)</div><div class="line">            n = (tab = resize()).length;</div><div class="line">        //确定插入table的位置，算法是(n - 1) &amp; hash</div><div class="line">        if ((p = tab[i = (n - 1) &amp; hash]) == null)</div><div class="line">            tab[i] = newNode(hash, key, value, null);</div><div class="line">        //在table的i位置发生碰撞，有两种情况，1、key值是一样的，替换value值，</div><div class="line">        //2、key值不一样的有两种处理方式：2.1、存储在i位置的链表；2.2、存储在红黑树中</div><div class="line">        else &#123;</div><div class="line">            Node&lt;K,V&gt; e; K k;</div><div class="line">            if (p.hash == hash &amp;&amp;</div><div class="line">                ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))</div><div class="line">                e = p;</div><div class="line">            //2.2</div><div class="line">            else if (p instanceof TreeNode)</div><div class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value);</div><div class="line">            //2.1</div><div class="line">            else &#123;</div><div class="line">                for (int binCount = 0; ; ++binCount) &#123;</div><div class="line">                    if ((e = p.next) == null) &#123;</div><div class="line">                        p.next = newNode(hash, key, value, null);</div><div class="line">                        //超过了链表的设置长度8就扩容</div><div class="line">                        if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st</div><div class="line">                            treeifyBin(tab, hash);</div><div class="line">                        break;</div><div class="line">                    &#125;</div><div class="line">                    if (e.hash == hash &amp;&amp;</div><div class="line">                        ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</div><div class="line">                        break;</div><div class="line">                    p = e;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            //如果e为空就替换旧的oldValue值</div><div class="line">            if (e != null) &#123; // existing mapping for key</div><div class="line">                V oldValue = e.value;</div><div class="line">                if (!onlyIfAbsent || oldValue == null)</div><div class="line">                    e.value = value;</div><div class="line">                afterNodeAccess(e);</div><div class="line">                return oldValue;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        ++modCount;</div><div class="line">        //threshold=newThr:(int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</div><div class="line">        //默认0.75*16，大于threshold值就扩容</div><div class="line">        if (++size &gt; threshold)</div><div class="line">            resize();</div><div class="line">        afterNodeInsertion(evict);</div><div class="line">        return null;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>下面说说hash的算法和寻址的算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static final int hash(Object key) &#123;</div><div class="line">    int h;</div><div class="line">    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>哈希将高16位和低16位的结果进行异或，可以减少碰撞。因为不这么做，直接hash&amp;(n-1)（ps:数组长度因为是2的幂数，减1后面二进制都是1，与的结果相当于hash的后几位%（n-1），这样更高效），但这样，就只考虑了低几位的结果，故容易发生碰撞。<br>然后是链表转红黑树的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">final void treeifyBin(Node&lt;K,V&gt;[] tab, int hash) &#123;</div><div class="line">        int n, index; Node&lt;K,V&gt; e;</div><div class="line">        //当tab.length&lt;MIN_TREEIFY_CAPACITY(64)是还是进行resize</div><div class="line">        if (tab == null || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)</div><div class="line">            resize();</div><div class="line">        else if ((e = tab[index = (n - 1) &amp; hash]) != null) &#123;</div><div class="line">            TreeNode&lt;K,V&gt; hd = null, tl = null;</div><div class="line">            do &#123;</div><div class="line">                TreeNode&lt;K,V&gt; p = replacementTreeNode(e, null);</div><div class="line">                if (tl == null)</div><div class="line">                    hd = p;</div><div class="line">                else &#123;</div><div class="line">                    p.prev = tl;</div><div class="line">                    tl.next = p;</div><div class="line">                &#125;</div><div class="line">                tl = p;</div><div class="line">            &#125; while ((e = e.next) != null);</div><div class="line">            if ((tab[index] = hd) != null)</div><div class="line">                //存储在红黑树</div><div class="line">                hd.treeify(tab);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>可看到，即使链表长度超过8，总数小于64还是会先扩容。resize()之后，很明显，有些点会在原位置，有些会移动2次幂的位置。为什么这么说，因为你想，每次扩容之后，实际就是计算hash&amp;（n-1）的时候，多了一位。而我们只用看hash值对应的那位是1还是0,如果是0就不变，是1就移动原位置+2次幂的值。所以，扩容的时候，需要重新计算hash，只要看1位就行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">final Node&lt;K,V&gt;[] resize() &#123;</div><div class="line">        Node&lt;K,V&gt;[] oldTab = table;</div><div class="line">        int oldCap = (oldTab == null) ? 0 : oldTab.length;</div><div class="line">        int oldThr = threshold;</div><div class="line">        int newCap, newThr = 0;</div><div class="line">        if (oldCap &gt; 0) &#123;</div><div class="line">            if (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</div><div class="line">                threshold = Integer.MAX_VALUE;</div><div class="line">                return oldTab;</div><div class="line">            &#125;</div><div class="line">            else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;</div><div class="line">                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</div><div class="line">                newThr = oldThr &lt;&lt; 1; // double threshold</div><div class="line">        &#125;</div><div class="line">        else if (oldThr &gt; 0) // initial capacity was placed in threshold</div><div class="line">            newCap = oldThr;</div><div class="line">        else &#123;               // zero initial threshold signifies using defaults</div><div class="line">            newCap = DEFAULT_INITIAL_CAPACITY;</div><div class="line">            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</div><div class="line">        &#125;</div><div class="line">        if (newThr == 0) &#123;</div><div class="line">            float ft = (float)newCap * loadFactor;</div><div class="line">            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?</div><div class="line">                      (int)ft : Integer.MAX_VALUE);</div><div class="line">        &#125;</div><div class="line">        threshold = newThr;</div><div class="line">        @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)</div><div class="line">            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap];</div><div class="line">        table = newTab;</div><div class="line">        if (oldTab != null) &#123;</div><div class="line">            for (int j = 0; j &lt; oldCap; ++j) &#123;</div><div class="line">                Node&lt;K,V&gt; e;</div><div class="line">                if ((e = oldTab[j]) != null) &#123;</div><div class="line">                    oldTab[j] = null;</div><div class="line">                    if (e.next == null)</div><div class="line">                        newTab[e.hash &amp; (newCap - 1)] = e;</div><div class="line">                    else if (e instanceof TreeNode)</div><div class="line">                        ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);</div><div class="line">                    else &#123; // preserve order</div><div class="line">                        //分别记录头和尾的节点</div><div class="line">                        Node&lt;K,V&gt; loHead = null, loTail = null;</div><div class="line">                        Node&lt;K,V&gt; hiHead = null, hiTail = null;</div><div class="line">                        Node&lt;K,V&gt; next;</div><div class="line">                        do &#123;</div><div class="line">                            next = e.next;</div><div class="line">                            if ((e.hash &amp; oldCap) == 0) &#123;</div><div class="line">                                if (loTail == null)</div><div class="line">                                    loHead = e;</div><div class="line">                                else</div><div class="line">                                    loTail.next = e;</div><div class="line">                                loTail = e;</div><div class="line">                            &#125;</div><div class="line">                            else &#123;</div><div class="line">                                if (hiTail == null)</div><div class="line">                                    hiHead = e;</div><div class="line">                                else</div><div class="line">                                    hiTail.next = e;</div><div class="line">                                hiTail = e;</div><div class="line">                            &#125;</div><div class="line">                        &#125; while ((e = next) != null);</div><div class="line">                        if (loTail != null) &#123;</div><div class="line">                            loTail.next = null;</div><div class="line">                            newTab[j] = loHead;</div><div class="line">                        &#125;</div><div class="line">                        if (hiTail != null) &#123;</div><div class="line">                            hiTail.next = null;</div><div class="line">                            //把节点移动新的位置j+oldCap,这种情况不适用与链表的节点数大于8的情况</div><div class="line">                            //链表节点大于8的情况会转换为红黑树存储</div><div class="line">                            newTab[j + oldCap] = hiHead;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return newTab;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>最后，是转为红黑树的具体代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">final void treeify(Node&lt;K,V&gt;[] tab) &#123;</div><div class="line">            TreeNode&lt;K,V&gt; root = null;</div><div class="line">            for (TreeNode&lt;K,V&gt; x = this, next; x != null; x = next) &#123;</div><div class="line">                next = (TreeNode&lt;K,V&gt;)x.next;</div><div class="line">                x.left = x.right = null;</div><div class="line">                if (root == null) &#123;</div><div class="line">                    x.parent = null;</div><div class="line">                    x.red = false;</div><div class="line">                    root = x;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    K k = x.key;</div><div class="line">                    int h = x.hash;</div><div class="line">                    Class&lt;?&gt; kc = null;</div><div class="line">                    //遍历root，把节点x插入到红黑树中，执行先插入，然后进行红黑树修正</div><div class="line">                    for (TreeNode&lt;K,V&gt; p = root;;) &#123;</div><div class="line">                        int dir, ph;</div><div class="line">                        K pk = p.key;</div><div class="line">                        if ((ph = p.hash) &gt; h)</div><div class="line">                            dir = -1;</div><div class="line">                        else if (ph &lt; h)</div><div class="line">                            dir = 1;</div><div class="line">                        else if ((kc == null &amp;&amp;</div><div class="line">                                  (kc = comparableClassFor(k)) == null) ||</div><div class="line">                                 (dir = compareComparables(kc, k, pk)) == 0)</div><div class="line">                            dir = tieBreakOrder(k, pk);//比较k和pk的值，用于判断是遍历左子树还是右子树</div><div class="line">                        TreeNode&lt;K,V&gt; xp = p;</div><div class="line">                        if ((p = (dir &lt;= 0) ? p.left : p.right) == null) &#123;</div><div class="line">                            x.parent = xp;</div><div class="line">                            if (dir &lt;= 0)</div><div class="line">                                xp.left = x;</div><div class="line">                            else</div><div class="line">                                xp.right = x;</div><div class="line">                            //修正红黑树</div><div class="line">                            root = balanceInsertion(root, x);</div><div class="line">                            //退出循环</div><div class="line">                            break;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            moveRootToFront(tab, root);</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>ps:当红黑树长度小于6时，会退成链表形式。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="Java-AQS简介">Java-AQS简介</a></h2>
+                <p class="excerpt">
+                
+                　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQ&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="聊聊字典树">聊聊字典树</a></h2>
+                <p class="excerpt">
+                
+                　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
+哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
+</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
