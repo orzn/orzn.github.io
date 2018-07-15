@@ -187,31 +187,17 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/07/11/java-serializable/" title="link to post.title">java序列化须知</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="link to post.title">聊聊字典树</a></h2>
       <p class="excerpt">
     
-      子类父类　　若父类实现了Serializable，子类不需要实现Serializable即可实现序列化。反之，父类未实现，子类实现了，序列化时，不会序列化父类的属性。如果父类不实现序列化，就必须有默认的无参构造函数，否则子类在继承Serializable接口后会报错。若想序列化父类的属性，需要自己实现writeObject(ObjectOutputStream out)和readObject(Ob&hellip;
+      　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
+哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。
+质数分辨定理　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘&hellip;
     
       </p>
-      <div class="post-list__meta"><time datetime="2018-07-11T11:57:10.000Z" class="post-list__meta--date date">2018-07-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/serializable/">serializable</a>
-</span><a class="btn-border-small" href="/2018/07/11/java-serializable/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/05/18/java/" title="link to post.title">Java ConcurrentModificationException</a></h2>
-      <p class="excerpt">
-    
-      1. 出现原因　　具体源码就不剖析了，直接说结果。原因是调用list.remove()方法导致modCount和expectedModCount的值不一致。注意，像使用for-each进行迭代实际上也会出现这种问题。所以，在迭代的过程中就不要使用list.remove()方法。
-2. 单线程环境下的解决办法　　既然知道原因了，那么如何解决呢？
-　　其实很简单，细心的朋友可能发现在Itr类中也给出了&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2017-05-18T14:26:32.003Z" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>
-</span><a class="btn-border-small" href="/2017/05/18/java/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
+</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

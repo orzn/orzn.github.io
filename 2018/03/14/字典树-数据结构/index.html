@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>聊聊字典树 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="聊聊字典树 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="聊聊字典树 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/03/14/字典树-数据结构/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">聊聊字典树</h1>
+  </header>
+
+  <section class="post">
+    <p>　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。</p>
+<h4 id="哈希树"><a href="#哈希树" class="headerlink" title="哈希树"></a>哈希树</h4><p>　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。</p>
+<h5 id="质数分辨定理"><a href="#质数分辨定理" class="headerlink" title="质数分辨定理"></a>质数分辨定理</h5><p>　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘积相等。“分辨”就是指这些连续的整数不可能有完全相同的余数序列。即对于3,5两个质数来说，可以分辨15个数。连续10个质数就可以分辨大约M(10) =2<em>3</em>5<em>7</em>11<em>13</em>17<em>19</em>23*29= 6464693230 个数。这已经足够满足人们的需求。</p>
+<h5 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h5><p>　　选择从2开始的连续质数来建立一个十层的哈希树，第一层结点为根节点，根节点下有两个结点，表示除2的余数为0或1，第二层的每个节点下有3个节点，表示除以3的余数为0,1,2。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct Node&#123;</div><div class="line">    keyType key;</div><div class="line">    ValueType value;</div><div class="line">    bool occupied;</div><div class="line">    struct Node* subNode[1];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　哈希树的节点结构如上所示，occupied表示该节点是否存有数。在在建树的过程中，不需要直接把每一层的空间事先开辟出来，可以等发生冲突在建立新的节点。具体流程，看图就明白了。<br><img src="https://img-blog.csdn.net/20150603103842199?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ195dWxlaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="哈希树建树"></p>
+<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><p>　　哈希树的查找过程和节点插入类似，就是除数取余，直至找到最终节点。可以很快的判断某个数是否存在。而删除节点也很简单，就把那个节点的ocuppied给标记为false就行。</p>
+<h4 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h4><p>　　看完哈希树，再说字典树就很简单了。哈希树里面存的是哈希值，字典树里存的就是单词字母了。每一层节点都有26个子节点，表示a,b,c,…,z。从根节点到目标节点的路径上的词串起来就是想要存的单词。其典型应用是统计，排序和保存大量的字符串，经常被用作文本词频统计。talk is cheap, show you the code.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">class TrieNode &#123;</div><div class="line">    boolean isLeaf;</div><div class="line">    Map&lt;Character,TrieNode&gt; content;</div><div class="line">    // Initialize your data structure here.</div><div class="line">    public TrieNode() &#123;</div><div class="line">        content = new HashMap&lt;Character,TrieNode&gt;();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Trie &#123;</div><div class="line">    private TrieNode root;</div><div class="line"></div><div class="line">    public Trie() &#123;</div><div class="line">        root = new TrieNode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Inserts a word into the trie.</div><div class="line">    public void insert(String word) &#123;</div><div class="line">        if(word == null || word.length() == 0)&#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        TrieNode node = root;</div><div class="line">        TrieNode tempNode = null;;</div><div class="line">        for(int i=0, len=word.length(); i&lt;len; i++)&#123;</div><div class="line">            Character c = word.charAt(i);</div><div class="line">            tempNode = node.content.get(c);</div><div class="line">            if(tempNode == null)&#123;</div><div class="line">                tempNode = new TrieNode();</div><div class="line">                node.content.put(c,tempNode);</div><div class="line">            &#125;</div><div class="line">            node = tempNode;</div><div class="line">        &#125;</div><div class="line">        node.isLeaf = true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Returns if the word is in the trie.</div><div class="line">    public boolean search(String word) &#123;</div><div class="line">        if(word == null || word.length() == 0)&#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        TrieNode node = root;</div><div class="line">        TrieNode tempNode = null;;</div><div class="line">        for(int i=0, len=word.length(); i&lt;len; i++)&#123;</div><div class="line">            Character c = word.charAt(i);</div><div class="line">            tempNode = node.content.get(c);</div><div class="line">            if(tempNode == null)&#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">            node = tempNode;</div><div class="line">        &#125;</div><div class="line">        return node.isLeaf;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Returns if there is any word in the trie</div><div class="line">    // that starts with the given prefix.</div><div class="line">    public boolean startsWith(String prefix) &#123;</div><div class="line">        if(prefix == null || prefix.length() == 0)&#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        TrieNode node = root;</div><div class="line">        TrieNode tempNode = null;;</div><div class="line">        for(int i=0, len=prefix.length(); i&lt;len; i++)&#123;</div><div class="line">            Character c = prefix.charAt(i);</div><div class="line">            tempNode = node.content.get(c);</div><div class="line">            if(tempNode == null)&#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">            node = tempNode;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="Java-AQS简介">Java-AQS简介</a></h2>
+                <p class="excerpt">
+                
+                　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQ&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/27/vmware/" title="vmware tools失效">vmware tools失效</a></h2>
+                <p class="excerpt">
+                
+                不知道是因为安装了哪些东西，vmware的vmware tools突然不能用了，窗口不能自适应，也不能拖动文件进行复制。折腾了好久，open-vm-tools，vmware中的vmware-tools各种反复安装，也没卵用。后来，试了别人博客一种方法，总算成功了。ps：vmware版本10，ubun&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-27T12:37:22.000Z" class="post-list__meta--date date">2017-12-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/vmware/">vmware</a>
+</span><a class="btn-border-small" href="/2017/12/27/vmware/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
