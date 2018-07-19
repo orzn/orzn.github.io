@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>java线程池的使用 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="java线程池的使用 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="java线程池的使用 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/03/15/java-线程池/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">java线程池的使用</h1>
+  </header>
+
+  <section class="post">
+    <p>　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。</p>
+<h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><p>　　ThreadPoolExecutor继承了抽象类AbstractExecutorService。而这个抽象类实现了ExecutorService接口，这个接口继承了Executor接口，这个顶层的接口声明了execute方法。这个方法也是线程池执行任务的方法。ThreadPoolExecutor提供了四种构造方法，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolExecutor extends AbstractExecutorService &#123;</div><div class="line">    .....</div><div class="line">    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,</div><div class="line">            BlockingQueue&lt;Runnable&gt; workQueue);</div><div class="line"> </div><div class="line">    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,</div><div class="line">            BlockingQueue&lt;Runnable&gt; workQueue,ThreadFactory threadFactory);</div><div class="line"> </div><div class="line">    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,</div><div class="line">            BlockingQueue&lt;Runnable&gt; workQueue,RejectedExecutionHandler handler);</div><div class="line"> </div><div class="line">    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,</div><div class="line">        BlockingQueue&lt;Runnable&gt; workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　而前三个方法实际上都是调用的第四个方法，让我们看一下里面的主要参数：</p>
+<ul>
+<li>corePoolSize：核心池大小</li>
+<li>maximumPoolSize：线程池最大线程数</li>
+<li>keepAliveTime：非核心线程没有任务执行时存活时间。但如果调用了allowCoreThreadTimeOut(boolean)方法，参数也会对核心池起作用。</li>
+<li>unit：keepAliveTime的单位，有TimeUnit.HOURS，TimeUnit.MINUTES等。</li>
+<li>workQueue：一个阻塞队列，存储等待执行的任务。</li>
+<li>threadFactory：线程工厂，可以写个初始化线程方法。</li>
+<li>handler：拒绝处理任务时的策略。</li>
+</ul>
+<h4 id="七七八八"><a href="#七七八八" class="headerlink" title="七七八八"></a>七七八八</h4><p>　　那么具体执行时，若当前线程池的线程数目小于corePoolSize,则每来一个任务，就会创建线程去执行。若当前线程池中数目&gt;=corePoolSize，则来的任务会先放入空闲队列，若满了，就建非核心线程执行。若线程池线程数达到maximumPoolSize，则采用任务拒绝策略处理。<br>workQueue，通常有如下三种：</p>
+<ol>
+<li>ArrayBlockingQueue：基于数组的先进先出队列，创建时必须指定大小。</li>
+<li>LinkedBlockingQueue：基于链表的先进先出队列，创建时若没指定大小，则默认为Integer.MAX_VALUE。</li>
+<li>synchronousQueue：不会保存任务，而是直接新建线程执行。</li>
+</ol>
+<p>　　handler，有如下四种：</p>
+<ol>
+<li>ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。</li>
+<li>ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</li>
+</ol>
+<p>　　一般我们不需要自己使用ThreadPoolExecutor，而使用Executors类提供的静态方法去创建。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public static ExecutorService newFixedThreadPool(int nThreads) &#123;</div><div class="line">    return new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue&lt;Runnable&gt;());</div><div class="line">&#125;</div><div class="line">public static ExecutorService newSingleThreadExecutor() &#123;</div><div class="line">    return new FinalizableDelegatedExecutorService(new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue&lt;Runnable&gt;()));</div><div class="line">&#125;</div><div class="line">public static ExecutorService newCachedThreadPool() &#123;</div><div class="line">    return new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue&lt;Runnable&gt;());</div><div class="line">&#125;//通常用于执行一些生存期很短的异步型任务</div></pre></td></tr></table></figure></p>
+<p>　　对于线程池大小的设置有个一般经验，对于CPU密集型任务，可以设成CPU+1。若是IO密集型，可设为2*CPU。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="Java-AQS简介">Java-AQS简介</a></h2>
+                <p class="excerpt">
+                
+                　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQ&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/14/红黑树-数据结构/" title="聊聊红黑树">聊聊红黑树</a></h2>
+                <p class="excerpt">
+                
+                红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。红黑树需要满足五个性质：
+
+节点是红色或者黑色。
+根节点是黑色。
+每个叶节点（空节点）是黑色。
+每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。
+从&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
+</span><a class="btn-border-small" href="/2018/03/14/红黑树-数据结构/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
