@@ -187,26 +187,6 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/06/01/Zookeeper-1/" title="link to post.title">Zookeeper初探（一）</a></h2>
-      <p class="excerpt">
-    
-      概述ZooKeeper是一种分布式协调服务，其本身类似于标准文件系统。通过这个文件系统，Zookeeper提供了以下几种常见服务：
-
-命名服务 按名称标示集群中的节点
-配置管理 加入节点的最近和最新的系统配置信息
-集群管理 实时的在集群和节点状态中加入/离开节点
-选举算法 选举一个节点作为协调目的的leader
-锁定和同步服务 在修改数据的同时锁定数据。此机制可帮助你在连接其他分布式应用程序（如A&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-06-01T08:11:12.000Z" class="post-list__meta--date date">2018-06-01</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Zookeeper/">Zookeeper</a>
-</span><a class="btn-border-small" href="/2018/06/01/Zookeeper-1/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java 动态代理/" title="link to post.title">Java-动态代理简介</a></h2>
       <p class="excerpt">
     
@@ -221,85 +201,8 @@
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="link to post.title">Java-AQS简介</a></h2>
-      <p class="excerpt">
-    
-      　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQS。
-　　前面提到的FIFO队列，节点Node保存着线程引用和线程状态。表示每一个等待锁的线程。No&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
-</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/java-线程池/" title="link to post.title">java线程池的使用</a></h2>
-      <p class="excerpt">
-    
-      　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。
-ThreadPoolExecutor　　ThreadPoolExecutor继承了抽象类AbstractExecutorService。而这个抽象类实现了ExecutorService接口，这个接口继承了&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
-</span><a class="btn-border-small" href="/2018/03/15/java-线程池/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/红黑树-数据结构/" title="link to post.title">聊聊红黑树</a></h2>
-      <p class="excerpt">
-    
-      红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。红黑树需要满足五个性质：
-
-节点是红色或者黑色。
-根节点是黑色。
-每个叶节点（空节点）是黑色。
-每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。
-从任一节点到每个叶节点所有路径都包含相同数目的黑色节点。
-
-
-为什么说红黑树能在对数时间内完成基本操作&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/红黑树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="link to post.title">聊聊字典树</a></h2>
-      <p class="excerpt">
-    
-      　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
-哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。
-质数分辨定理　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
-    
-    <span class="pagination__page-number" > 2 / 2 </span>
-    
-  </nav>
 
 
 </div>
