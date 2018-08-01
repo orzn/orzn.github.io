@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>synchronized详解 | orzn</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="望你走出半生，归来仍是少年">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="synchronized详解 | orzn">
+    <meta name="twitter:description" content="望你走出半生，归来仍是少年">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="synchronized详解 | orzn">
+    <meta property="og:description" content="望你走出半生，归来仍是少年">
+
+    
+    <meta name="author" content="John Doe">
+    
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://orzn.github.io/2018/04/21/多线程-synchronized/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 orzn 的主页"><img src="/images/avatar.jpg" width="80" alt="orzn logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for orzn">orzn</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">兴趣使然</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">望你走出半生，归来仍是少年</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="https://weibo.com/orznn" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/orzn" title="查看我的 GitHub 主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+
+
+
+
+    <li class="navigation__item">
+  <a href="#" title="搜索">
+    <i class='social fa fa-search search-form-link'></i>
+    <span class="label">搜索</span>
+  </a>
+</li>
+
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="搜索 ..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '无标题',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-21T06:30:10.000Z" class="post-list__meta--date date">2018-04-21</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/synchronized/">synchronized</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">synchronized详解</h1>
+  </header>
+
+  <section class="post">
+    <p>　　synchronized是java里一个重要的关键词。当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。</p>
+<h4 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h4><p>　　同步一个代码块:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public void func()&#123;</div><div class="line">    synchronized(this)&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　它只作用于一个对象this，所以不同的对象的方法func不会同步。<br>　　同步一个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public synchronized void func()&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　这个和上面的例子一样。<br>　　同步一个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public void func()&#123;</div><div class="line">    synchronized(synchronizedExample.class)&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　上面的synchronized作用于整个类，所以两个线程调用同一个类的不同对象上的函数，也会进行同步。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public synchronized static void fun()&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>　　和上面一样。</p>
+<h4 id="原理和优化"><a href="#原理和优化" class="headerlink" title="原理和优化"></a>原理和优化</h4><p>　　我们需要先了解在JVM中，对象是怎么存的。对象存储时分成3部分，对象头、实例数据和对齐填充。实例数据存储的是类的属性数据信息，父类信息，如果是数组还包括数组的长度。对齐填充就是为了字节对齐而产生的。而对象头是sync里要用到的重要结构。<br>对象头主要分为两部分，Mark Word和Class Metadata Address。Mark Word存储对象的hashCode、锁信息或分代年龄或GC标志等信息。Class Metadata Address很明显，存的是指针，指向对象的类元数据，用来确定对象属于什么类。sync通过Mark Word来实现轻量级锁，偏向锁等优化。<br>　　每一个对象都存在着一个monitor与之关联，monitor可以与对象一起创建销毁或当线程试图获取对象锁时自动生成，HotSpot虚拟机中，这部分代码是由C++实现的。每个试图获取锁的线程会进入EntryList，得到锁时，monitor中的owner变量设为当前线程，若线程调用wait()时，owner变null，线程进入waitSet队列中等待被唤醒。monitor依赖于底层操作系统的Mutex Lock，线程之间切换时需要从用户态转换到和心态，因此效率低。Java6之后，引入了轻量级锁和偏向锁。<br>　　<strong>偏向锁</strong>的核心思想是，如果一个线程获得了锁，那么锁就进入偏向模式，此时Mark Word的结构也变为偏向锁结构，当这个线程再次请求锁时，无需再做任何同步操作，即获取锁的过程，这样就省去了大量有关锁申请的操作，从而也就提供程序的性能。所以，对于没有锁竞争的场合，偏向锁有很好的优化效果，毕竟极有可能连续多次是同一个线程申请相同的锁。但是对于锁竞争比较激烈的场合，偏向锁就失效了，因为这样场合极有可能每次申请锁的线程都是不相同的，因此这种场合下不应该使用偏向锁，否则会得不偿失，需要注意的是，偏向锁失败后，并不会立即膨胀为重量级锁，而是先升级为轻量级锁。<br>　　偏向锁对象只在第一次被拥有时，记录下偏向线程ID，退出同步也不需去锁，之后每次同步都只用检查ID。如果不一致，则锁膨胀为轻量级锁。<br><img src="http://blog.zswlib.com/wp-content/uploads/2017/12/clipboard-1.png" alt="偏向锁去锁"><br>　　<strong>轻量级锁</strong>能够提升程序性能的依据是“对绝大部分的锁，在整个同步周期内都不存在竞争”，注意这是经验数据。需要了解的是，轻量级锁所适应的场景是线程交替执行同步块的场合，如果存在同一时间访问同一锁的场合，就会导致轻量级锁膨胀为重量级锁。轻量级锁采用CAS获取锁（在当前栈帧中建立Lock Record存储锁对象的Mark Word，再使用CAS将锁对象的Mark Word指向Lock Record），若发现自己已拥有锁，则计入同步块继续执行，否则就自旋来获取锁。每次退出同步块都要释放锁，也尝试CAS把Lock Record记录替换回锁对象头。若失败，则膨胀。<br><img src="http://blog.zswlib.com/wp-content/uploads/2017/12/clipboard-3.png" alt="轻量级锁"></p>
+<h4 id="和ReentrantLock对比"><a href="#和ReentrantLock对比" class="headerlink" title="和ReentrantLock对比"></a>和ReentrantLock对比</h4><ol>
+<li>锁的实现：syn是JVM实现的，而Lock是JDK实现的。</li>
+<li>性能：早期Lock效率更高，现在Java对syn进行了很多优化，如自旋锁等，二者效率大致相当。</li>
+<li>等待可中断：当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理的其他事情。ReentrantLock可中断，而syn不行。</li>
+<li>公平锁：syn中锁是非公平的，而ReentrantLock默认情况下也是非公平的，但是也可以是公平的。</li>
+<li>锁绑定多个条件：一个ReentrantLock可以同时绑定多个Condition对象。<br>ps:除非需要使用 ReentrantLock 的高级功能，否则优先使用 synchronized。这是因为 synchronized 是JVM实现的一种锁机制，JVM原生地支持它，而ReentrantLock不是所有的JDK版本都支持。并且使用synchronized不用担心没有释放锁而导致死锁问题，因为 JVM 会确保锁的释放。</li>
+</ol>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/31/Java AQS/" title="Java-AQS简介">Java-AQS简介</a></h2>
+                <p class="excerpt">
+                
+                　　AQS，即AbstractQueuedSynchronizer。提供了一个基于FIFO队列，和state变量，可以用于构建锁或者其他相关同步装置的基础框架。目前我所了解到的ReentrantLock、ReadWriteLock，CountdownLatch，FutureTask等实现都依赖于AQ&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-05-31T10:39:27.000Z" class="post-list__meta--date date">2018-05-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AQS/">AQS</a>, <a class="tag-link" href="/tags/Java/">Java</a>
+</span><a class="btn-border-small" href="/2018/05/31/Java AQS/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/15/java-线程池/" title="java线程池的使用">java线程池的使用</a></h2>
+                <p class="excerpt">
+                
+                　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。
+ThreadPoolExecutor　　ThreadPoolExecutor继承了抽象类Abstract&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
+</span><a class="btn-border-small" href="/2018/03/15/java-线程池/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+
+            
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2018 - 本站由 <a href="/">@orzn</a> 创建,
+        使用hexo-theme-new-vno主题,
+        修改自 <a href="https://github.com/monniya/hexo-theme-new-vno" target="_blank">Monniya</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-98806136-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e79382fd6ebde665c62c13d63baf2ee1";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
