@@ -187,6 +187,44 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/26/mybatis-缓存/" title="link to post.title">mybatis与缓存的那些事儿</a></h2>
+      <p class="excerpt">
+    
+      　　mybatis对缓存提供支持，默认情况是开启一级缓存，以后再查询的时候，会从缓存取数据。一级缓存是sqlSession级别的.二级缓存是application级别的，默认是不开启的。开启需要在xml文件里进行配置。
+一级缓存　　一级缓存分为session或statement两个级别，sqlsession代表和数据库的一次会话，mappedstatement代表发往数据库执行的指令，可理解为sq&hellip;
+    
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-26T07:00:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/mybatis/">mybatis</a>, <a class="tag-link" href="/tags/缓存/">缓存</a>
+</span><a class="btn-border-small" href="/2018/08/26/mybatis-缓存/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/26/session-1/" title="link to post.title">分布式session的实现方式</a></h2>
+      <p class="excerpt">
+    
+      实先分布式session有以下几种方案。
+
+基于NFS
+
+NFS是Network FileSystem的简称，它允许网络中的计算机通过TCP/IP网络共享资源。本地NFS客户端可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。缺点是NFS依托于复杂的安全机制和文件系统，因此并发效率不高。
+
+
+基于数据库
+
+首选当然是大名鼎鼎的Mysql数据库，并且建议使用内存表Heap，提高ses&hellip;
+    
+      </p>
+      <div class="post-list__meta"><time datetime="2018-08-26T06:59:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/session/">session</a>
+</span><a class="btn-border-small" href="/2018/08/26/session-1/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/08/06/java-参数传递/" title="link to post.title">java是值传递还是引用传递</a></h2>
       <p class="excerpt">
     
@@ -306,59 +344,12 @@ EJB的概念EJB，Enterprise JavaBean，是一种描述了构建应用组件要�
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/06/30/MongoDB-1/" title="link to post.title">MongoDB入门</a></h2>
-      <p class="excerpt">
-    
-      1、相关基本概念　　MongoDB 是一个基于分布式文件存储的数据库。由 C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。　　MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
-
-
-
-RDBMS
-NoSQL
-
-
-
-
-高度组织化结构化数据
-没有预定义的模式
-
-
-结构化查询查询语言
-没有声明性查询语言 
-
-
-严格的一致性
-&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-06-30T07:36:20.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/MongoDB/">MongoDB</a>, <a class="tag-link" href="/tags/database/">database</a>
-</span><a class="btn-border-small" href="/2018/06/30/MongoDB-1/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/06/10/netty-2/" title="link to post.title">netty之hellworld（二）</a></h2>
-      <p class="excerpt">
-    
-      直接通过一个简单的helloworld程序来学习netty的使用，实现一个server输出并返回client的数据。用的netty版本是4.0.21.Final。12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;io.netty&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;netty-all&amp;lt;/artifactId&amp;gt;   &hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-06-10T06:31:10.000Z" class="post-list__meta--date date">2018-06-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/netty/">netty</a>
-</span><a class="btn-border-small" href="/2018/06/10/netty-2/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
 
   <nav class="pagination" role="navigation">
     
-    <span class="pagination__page-number" > 1 / 3 </span>
+    <span class="pagination__page-number" > 1 / 4 </span>
     
       <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/2/">更早 →</a>
     

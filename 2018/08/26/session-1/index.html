@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>orzn | 兴趣使然</title>
+    <title>分布式session的实现方式 | orzn</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="望你走出半生，归来仍是少年">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="orzn | 兴趣使然">
+    <meta name="twitter:title" content="分布式session的实现方式 | orzn">
     <meta name="twitter:description" content="望你走出半生，归来仍是少年">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="orzn | 兴趣使然">
+    <meta property="og:title" content="分布式session的实现方式 | orzn">
     <meta property="og:description" content="望你走出半生，归来仍是少年">
 
     
@@ -38,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://orzn.github.io"/>
+    <link rel="canonical" href="http://orzn.github.io/2018/08/26/session-1/"/>
 
     
       
@@ -181,84 +181,89 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-26T06:59:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/session/">session</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">分布式session的实现方式</h1>
+  </header>
+
+  <section class="post">
+    <p>实先分布式session有以下几种方案。</p>
+<ol>
+<li><p>基于NFS</p>
+<blockquote>
+<p>NFS是Network FileSystem的简称，它允许网络中的计算机通过TCP/IP网络共享资源。本地NFS客户端可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。缺点是NFS依托于复杂的安全机制和文件系统，因此并发效率不高。</p>
+</blockquote>
+</li>
+<li><p>基于数据库</p>
+<blockquote>
+<p>首选当然是大名鼎鼎的Mysql数据库，并且建议使用内存表Heap，提高session操作的读写效率。这个方案的实用性比较强，相信大家普遍在使用，它的缺点在于session的并发读写能力取决于Mysql数据库的性能，同时需要自己实现session淘汰逻辑，以便定时从数据表中更新、删除 session记录，当并发过高时容易出现表锁，虽然我们可以选择行级锁的表引擎，但不得不否认使用数据库存储Session还是有些杀鸡用牛刀的架势。</p>
+</blockquote>
+</li>
+<li><p>基于cookie的</p>
+<blockquote>
+<p>就是把所有信息都存到cookie中，这样用户就可以跨服务器运行，进行操作判断。但这种方法缺点很明显，若客户端禁用了cookie或者cookie被黑客窃取了呢？并且，由于受http协议头长度的限制，仅能存储少了信息。另外传送信息时，还会占用带宽资源，虽然有种种缺点，但是也有解决办法，目前淘宝的session框架就是基于client cookie做开发。</p>
+</blockquote>
+</li>
+<li><p>基于分布式缓存的</p>
+<blockquote>
+<p>还可以使用redis，memcache。Memcache的内存hash表所特有的Expires数据过期淘汰机制，正好和Session的过期机制不谋而合，降低了过期Session数据删除的代码复杂度，对比“基于数据库的存储方案”，仅这块逻辑就给数据表产生巨大的查询压力。</p>
+</blockquote>
+</li>
+</ol>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-  <ol class="post-list post">
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/26/mybatis-缓存/" title="mybatis与缓存的那些事儿">mybatis与缓存的那些事儿</a></h2>
+                <p class="excerpt">
+                
+                　　mybatis对缓存提供支持，默认情况是开启一级缓存，以后再查询的时候，会从缓存取数据。一级缓存是sqlSession级别的.二级缓存是application级别的，默认是不开启的。开启需要在xml文件里进行配置。
+一级缓存　　一级缓存分为session或statement两个级别，sqlses&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-26T07:00:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/mybatis/">mybatis</a>, <a class="tag-link" href="/tags/缓存/">缓存</a>
+</span><a class="btn-border-small" href="/2018/08/26/mybatis-缓存/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/06/java-参数传递/" title="java是值传递还是引用传递">java是值传递还是引用传递</a></h2>
+                <p class="excerpt">
+                
+                　　之前没有多想，一直以为java是引用传递。比如像这样：123456789public static void test(List&amp;lt;Integer&amp;gt; a)&amp;#123;    a.add(2);&amp;#125;public static void main(String[] args) th&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-06T02:42:10.000Z" class="post-list__meta--date date">2018-08-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/java/">java</a>
+</span><a class="btn-border-small" href="/2018/08/06/java-参数传递/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/java-线程池/" title="link to post.title">java线程池的使用</a></h2>
-      <p class="excerpt">
-    
-      　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。
-ThreadPoolExecutor　　ThreadPoolExecutor继承了抽象类AbstractExecutorService。而这个抽象类实现了ExecutorService接口，这个接口继承了&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
-</span><a class="btn-border-small" href="/2018/03/15/java-线程池/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/多线程-ThreadLocal/" title="link to post.title">ThreadLocal简介</a></h2>
-      <p class="excerpt">
-    
-      　　ThreadLocal，是为每个线程保存一份局部变量的存在。具体的内部构造方法，网上有很多其实描述的不是很准确，故特此记录。先看下ThreadLocal中的主要函数:123456789101112131415161718192021222324 void createMap(Thread t, T firstValue) &amp;#123;    t.threadLocals = new Threa&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ThreadLocal/">ThreadLocal</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
-</span><a class="btn-border-small" href="/2018/03/15/多线程-ThreadLocal/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/红黑树-数据结构/" title="link to post.title">聊聊红黑树</a></h2>
-      <p class="excerpt">
-    
-      红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。红黑树需要满足五个性质：
-
-节点是红色或者黑色。
-根节点是黑色。
-每个叶节点（空节点）是黑色。
-每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。
-从任一节点到每个叶节点所有路径都包含相同数目的黑色节点。
-
-
-为什么说红黑树能在对数时间内完成基本操作&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/红黑树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="link to post.title">聊聊字典树</a></h2>
-      <p class="excerpt">
-    
-      　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
-哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。
-质数分辨定理　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
+</section>
 
 
             

@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>orzn | 兴趣使然</title>
+    <title>mybatis与缓存的那些事儿 | orzn</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="望你走出半生，归来仍是少年">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="orzn | 兴趣使然">
+    <meta name="twitter:title" content="mybatis与缓存的那些事儿 | orzn">
     <meta name="twitter:description" content="望你走出半生，归来仍是少年">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="orzn | 兴趣使然">
+    <meta property="og:title" content="mybatis与缓存的那些事儿 | orzn">
     <meta property="og:description" content="望你走出半生，归来仍是少年">
 
     
@@ -38,7 +38,7 @@
     <link rel="alternate" type="application/rss+xml" title="orzn" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://orzn.github.io"/>
+    <link rel="canonical" href="http://orzn.github.io/2018/08/26/mybatis-缓存/"/>
 
     
       
@@ -181,84 +181,64 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-26T07:00:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/mybatis/">mybatis</a>, <a class="tag-link" href="/tags/缓存/">缓存</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">mybatis与缓存的那些事儿</h1>
+  </header>
+
+  <section class="post">
+    <p>　　mybatis对缓存提供支持，默认情况是开启一级缓存，以后再查询的时候，会从缓存取数据。一级缓存是sqlSession级别的.二级缓存是application级别的，默认是不开启的。开启需要在xml文件里进行配置。</p>
+<h4 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h4><p>　　一级缓存分为session或statement两个级别，sqlsession代表和数据库的一次会话，mappedstatement代表发往数据库执行的指令，可理解为sql的抽象表示。<br>如果sqlsession执行了commit操作（执行插入、更新、删除），则会清空缓存，这样做的目的为了让缓存中存储的都是最新的信息，避免脏读。但多个sqlsession或分布式环境下，会发生脏读现象。建议设定缓存级别为Stateent。<br>　　spring对mybatis的sqlsession的使用是由template控制的，sqlsession又被spring当作resource放在当前线程的上下文里。所以，每次执行sql语句时，spring会从资源池中取sqlsession，因故spring无法使用mybatis的一级缓存。</p>
+<h4 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h4><p>　　开启二级缓存，需要如下配置，在mybatis-configuration.xml中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;settings&gt;</div><div class="line">    &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</div><div class="line">&lt;/settings&gt;</div></pre></td></tr></table></figure></p>
+<p>　　在Mapper.xml文件中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;cache&gt;&lt;/cache&gt;</div></pre></td></tr></table></figure></p>
+<p>　　这里可以配置成<cache type="org.apache.ibatis.cache.impl.PerpetualCache">，这个是默认配置，也可不写。PerpetualCache这个类底层就是HashMap结构。<br>因为二级缓存不一定只存在内存中，有可能存在硬盘中，所以缓存的pojo需要实现Serializable接口。</cache></p>
+<h4 id="缓存的概念"><a href="#缓存的概念" class="headerlink" title="缓存的概念"></a>缓存的概念</h4><p>　　初次提到缓存，就不得不提一些常见的名词，也是一个缓存系统，必须要考虑的一些问题。</p>
+<h5 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h5><p>　　穿透指的是查询一个不存在的数据，因为本地不存在，也不会加载到缓存中。而这个请求并发量还很大，就会对后端造成很大压力。解决办法可以对空结果也进行缓存。</p>
+<h5 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h5><p>　　缓存在过期时，恰好有大量对这个key的并发请求过来，这时候请求会从后端加载数据。可以用互斥锁的方法解决，即只让一个请求去取数据。</p>
+<h5 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h5><p>　　指的是由于对缓存设置了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过大过重雪崩。可以在原有失效时间上加随机值，避免引发集体失效。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-  <ol class="post-list post">
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/26/session-1/" title="分布式session的实现方式">分布式session的实现方式</a></h2>
+                <p class="excerpt">
+                
+                实先分布式session有以下几种方案。
+
+基于NFS
+
+NFS是Network FileSystem的简称，它允许网络中的计算机通过TCP/IP网络共享资源。本地NFS客户端可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。缺点是NFS依托于复杂的安全机制和文件系统，因此并发效率不&hellip;
+                
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-26T06:59:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/session/">session</a>
+</span><a class="btn-border-small" href="/2018/08/26/session-1/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/java-线程池/" title="link to post.title">java线程池的使用</a></h2>
-      <p class="excerpt">
-    
-      　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。
-ThreadPoolExecutor　　ThreadPoolExecutor继承了抽象类AbstractExecutorService。而这个抽象类实现了ExecutorService接口，这个接口继承了&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
-</span><a class="btn-border-small" href="/2018/03/15/java-线程池/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/多线程-ThreadLocal/" title="link to post.title">ThreadLocal简介</a></h2>
-      <p class="excerpt">
-    
-      　　ThreadLocal，是为每个线程保存一份局部变量的存在。具体的内部构造方法，网上有很多其实描述的不是很准确，故特此记录。先看下ThreadLocal中的主要函数:123456789101112131415161718192021222324 void createMap(Thread t, T firstValue) &amp;#123;    t.threadLocals = new Threa&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ThreadLocal/">ThreadLocal</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
-</span><a class="btn-border-small" href="/2018/03/15/多线程-ThreadLocal/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/红黑树-数据结构/" title="link to post.title">聊聊红黑树</a></h2>
-      <p class="excerpt">
-    
-      红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。红黑树需要满足五个性质：
-
-节点是红色或者黑色。
-根节点是黑色。
-每个叶节点（空节点）是黑色。
-每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。
-从任一节点到每个叶节点所有路径都包含相同数目的黑色节点。
-
-
-为什么说红黑树能在对数时间内完成基本操作&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/红黑树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="link to post.title">聊聊字典树</a></h2>
-      <p class="excerpt">
-    
-      　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
-哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。
-质数分辨定理　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
+</section>
 
 
             

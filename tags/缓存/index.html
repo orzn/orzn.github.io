@@ -187,69 +187,16 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/java-线程池/" title="link to post.title">java线程池的使用</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/08/26/mybatis-缓存/" title="link to post.title">mybatis与缓存的那些事儿</a></h2>
       <p class="excerpt">
     
-      　　java线程的创建销毁会大大降低系统效率，因此，线程池便应用而生。线程得以复用，执行完一个任务后，继续执行其他任务。而在Java中构建的线程池的类，就是ThreadPoolExecutor。
-ThreadPoolExecutor　　ThreadPoolExecutor继承了抽象类AbstractExecutorService。而这个抽象类实现了ExecutorService接口，这个接口继承了&hellip;
+      　　mybatis对缓存提供支持，默认情况是开启一级缓存，以后再查询的时候，会从缓存取数据。一级缓存是sqlSession级别的.二级缓存是application级别的，默认是不开启的。开启需要在xml文件里进行配置。
+一级缓存　　一级缓存分为session或statement两个级别，sqlsession代表和数据库的一次会话，mappedstatement代表发往数据库执行的指令，可理解为sq&hellip;
     
       </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/多线程/">多线程</a>, <a class="tag-link" href="/tags/线程池/">线程池</a>
-</span><a class="btn-border-small" href="/2018/03/15/java-线程池/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/15/多线程-ThreadLocal/" title="link to post.title">ThreadLocal简介</a></h2>
-      <p class="excerpt">
-    
-      　　ThreadLocal，是为每个线程保存一份局部变量的存在。具体的内部构造方法，网上有很多其实描述的不是很准确，故特此记录。先看下ThreadLocal中的主要函数:123456789101112131415161718192021222324 void createMap(Thread t, T firstValue) &amp;#123;    t.threadLocals = new Threa&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-15T11:38:10.000Z" class="post-list__meta--date date">2018-03-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/ThreadLocal/">ThreadLocal</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
-</span><a class="btn-border-small" href="/2018/03/15/多线程-ThreadLocal/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/红黑树-数据结构/" title="link to post.title">聊聊红黑树</a></h2>
-      <p class="excerpt">
-    
-      红黑树是一个平衡的二叉树，但是不是常说的那个平衡二叉树，左右高度相差小于等于１。红黑树放宽了条件，但能在对数时间内完成查找删除。红黑树需要满足五个性质：
-
-节点是红色或者黑色。
-根节点是黑色。
-每个叶节点（空节点）是黑色。
-每个红色节点的两个子节点都是黑色的（也就是说不存在两个连续的红色节点）。
-从任一节点到每个叶节点所有路径都包含相同数目的黑色节点。
-
-
-为什么说红黑树能在对数时间内完成基本操作&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/红黑树，-数据结构/">红黑树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/红黑树-数据结构/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/03/14/字典树-数据结构/" title="link to post.title">聊聊字典树</a></h2>
-      <p class="excerpt">
-    
-      　　字典树，又称trie树，单词查找树。是一种哈希树的变种。那么这里，就不得不先提一下什么是哈希树。
-哈希树　　我们知道通常要进行哈希操作，肯定会发生碰撞，而哈希树算法就是要提供一种在理论上和实际应用总均能有效地处理冲突的方法。一般的哈希算法是用空间换时间，而哈希树则采用了一种技巧使得对空间的需求控制在一定范围内。
-质数分辨定理　　简单地说就是：n个不同的质数可以“分辨”的连续整数的个数和他们的乘&hellip;
-    
-      </p>
-      <div class="post-list__meta"><time datetime="2018-03-14T06:40:45.000Z" class="post-list__meta--date date">2018-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/字典树，-数据结构/">字典树， 数据结构</a>
-</span><a class="btn-border-small" href="/2018/03/14/字典树-数据结构/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2018-08-26T07:00:12.000Z" class="post-list__meta--date date">2018-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/mybatis/">mybatis</a>, <a class="tag-link" href="/tags/缓存/">缓存</a>
+</span><a class="btn-border-small" href="/2018/08/26/mybatis-缓存/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
